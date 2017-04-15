@@ -3,4 +3,15 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <fragment
+        android:name="com.sofia.noterecorder.mainFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/mainFragment" />
+
+    <fragment
+        android:name="com.sofia.noterecorder.secondaryFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/secondaryFragment" />
 </LinearLayout>
