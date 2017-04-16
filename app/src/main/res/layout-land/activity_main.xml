@@ -1,17 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:baselineAligned="false"
+    android:background="@color/colorPrimaryDark"
+    >
 
     <fragment
-        android:name="com.sofia.noterecorder.mainFragment"
-        android:layout_width="match_parent"
+        android:name="com.sofia.noterecorder.txtBtnFragment"
+        android:layout_width="0dp"
+        android:layout_weight="0.4"
         android:layout_height="match_parent"
-        android:id="@+id/mainFragment" />
+        android:id="@+id/btnFragment"
+        tools:layout="@layout/btn_fragment" />
 
     <fragment
-        android:name="com.sofia.noterecorder.secondaryFragment"
-        android:layout_width="match_parent"
+        android:name="com.sofia.noterecorder.recordFragment"
+        android:layout_width="0dp"
+        android:layout_weight="0.6"
         android:layout_height="match_parent"
-        android:id="@+id/secondaryFragment" />
+        android:id="@+id/recordFragment"
+        tools:layout="@layout/record_fragment" />
+
+
 </LinearLayout>
