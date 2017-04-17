@@ -84,10 +84,14 @@ public class RecordService extends Service {
     }
 
     public String createFile(){
-        String path = getExternalCacheDir().getAbsolutePath() + "/" + recordNote;
+        File folder = new File(getExternalCacheDir().getAbsolutePath() + "/" + recordNote + "/");
+        folder.mkdirs();
         String dateInString = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss", Locale.ENGLISH).format(new Date());
         String fileName = "/" + dateInString + ".3gp";
-        mFileName = path + fileName;
+        mFileName = folder.getPath() + fileName;
+
+        System.out.println("FILENAME: " + mFileName);
+
         return mFileName;
     }
 
