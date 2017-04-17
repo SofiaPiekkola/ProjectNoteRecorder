@@ -1,16 +1,18 @@
-package com.sofia.noterecorder;
+package com.sofia.noterecorder.Activitys;
 
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.sofia.noterecorder.R;
+import com.sofia.noterecorder.Services.RecordService;
 
 public class MainActivity extends AppCompatActivity {
     String noteState;
@@ -58,5 +60,10 @@ public class MainActivity extends AppCompatActivity {
         Button pressed = (Button) view;
         if (pressed.getText().toString().toLowerCase().contains("note")) pressed.setText("Record sound");
         else pressed.setText("Record note");
+    }
+
+    public void listenRecords(View view) {
+        Intent intent = new Intent(this, ListenRecordsActivity.class);
+        startActivity(intent);
     }
 }
