@@ -11,9 +11,11 @@
         app:layout_widthPercent="80%"
 
         android:id="@+id/recBtn"
-        android:background="@drawable/rec_button"
+        android:background="@drawable/selector"
 
         android:layout_margin="20dp"
-        android:shadowColor="#000000" />
+        android:shadowColor="#000000"
+        android:onClick="record"
+        />
 
 </android.support.percent.PercentRelativeLayout>
