@@ -11,10 +11,9 @@
         app:layout_widthPercent="80%"
 
         android:id="@+id/recBtn"
-        android:background="@drawable/selector"
+        android:background="@drawable/selector_mic"
 
         android:layout_margin="20dp"
-        android:shadowColor="#000000"
         android:onClick="record"
         />
 
