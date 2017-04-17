@@ -8,20 +8,20 @@
     >
 
     <fragment
-        android:name="com.sofia.noterecorder.fragments.txtBtnFragment"
+        android:name="com.sofia.noterecorder.fragments.listFragment"
+        android:id="@+id/recordingsListFragment"
         android:layout_width="0dp"
         android:layout_weight="0.4"
         android:layout_height="match_parent"
-        android:id="@+id/btnFragment"
-        tools:layout="@layout/txt_btn_fragment" />
+        tools:layout="@layout/list_fragment"/>
 
     <fragment
-        android:name="com.sofia.noterecorder.fragments.recordFragment"
+        android:name="com.sofia.noterecorder.fragments.playFragment"
         android:layout_width="0dp"
         android:layout_weight="0.6"
         android:layout_height="match_parent"
-        android:id="@+id/recordFragment"
-        tools:layout="@layout/record_fragment" />
+        android:id="@+id/playFileFragment"
+        tools:layout="@layout/play_fragment"/>
 
 
 </LinearLayout>

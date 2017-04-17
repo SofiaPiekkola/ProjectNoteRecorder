@@ -2,8 +2,8 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:state_activated="false"
-        android:drawable="@drawable/rec_button" />
+        android:drawable="@drawable/button_open" />
     <item
         android:state_activated="true"
-        android:drawable="@drawable/rec_button_empty" />
+        android:drawable="@drawable/button_close" />
 </selector>
