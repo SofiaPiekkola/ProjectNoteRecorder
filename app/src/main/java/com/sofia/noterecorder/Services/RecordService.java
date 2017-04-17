@@ -1,4 +1,4 @@
-package com.sofia.noterecorder;
+package com.sofia.noterecorder.Services;
 
 import android.app.Service;
 import android.content.Intent;
@@ -56,31 +56,6 @@ public class RecordService extends Service {
         recorder.stop();
         recorder.release();
         recorder = null;
-
-        printFiles();
-    }
-
-
-    public void printFiles(){
-        System.out.println("Content: ");
-        String path1 = getExternalCacheDir().getAbsolutePath() + "/notes";
-        String path2 = getExternalCacheDir().getAbsolutePath() + "/sounds";
-
-        File directory1 = new File(path1);
-        File directory2 = new File(path2);
-
-        File[] files1 = directory1.listFiles();
-        File[] files2 = directory2.listFiles();
-
-        if (files1 != null) {
-            System.out.println("Path: " + path1);
-            for (File aFiles1 : files1) System.out.println(aFiles1.getName());
-        }
-
-        if (files2 != null) {
-            System.out.println("Path: " + path2);
-            for (File aFiles2 : files2) System.out.println(aFiles2.getName());
-        }
     }
 
     public String createFile(){
