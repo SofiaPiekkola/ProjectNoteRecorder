@@ -54,6 +54,7 @@ public class RecordService extends Service {
 
     private void stopRecording() {
         recorder.stop();
+        recorder.reset();
         recorder.release();
         recorder = null;
     }
@@ -61,12 +62,18 @@ public class RecordService extends Service {
     public String createFile(){
         File folder = new File(getExternalCacheDir().getAbsolutePath() + "/" + recordNote + "/");
         folder.mkdirs();
-        String dateInString = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss", Locale.ENGLISH).format(new Date());
-        String fileName = "/" + dateInString + ".3gp";
-        mFileName = folder.getPath() + fileName;
-
-        System.out.println("FILENAME: " + mFileName);
-
+        String dateInString = new SimpleDateFormat("yyyy.MM.dd.", Locale.ENGLISH).format(new Date());
+        File f;
+        int i = 0;
+        String length = "%03d";
+        do{
+            i++;
+            if((i + "").length() > 2) length = "%0" + (i + "").length() + "d";
+            String s = String.format(Locale.ENGLISH, length, i);
+            String fileName = "/" + dateInString + s + ".3gp";
+            mFileName = folder.getPath() + fileName;
+            f = new File(mFileName);
+        }while (f.exists());
         return mFileName;
     }
 
