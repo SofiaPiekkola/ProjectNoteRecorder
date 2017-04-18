@@ -3,8 +3,8 @@
     <item android:drawable="@drawable/button_a_empty" />
     <item
         android:drawable="@drawable/img_play"
-        android:bottom="50dp"
-        android:left="50dp"
-        android:right="50dp"
-        android:top="50dp"/>
+        android:bottom="30dp"
+        android:left="30dp"
+        android:right="30dp"
+        android:top="30dp"/>
 </layer-list>

@@ -10,15 +10,20 @@ import android.view.ViewGroup;
 import com.sofia.noterecorder.R;
 
 /**
- * Created by Sofia on 17.4.2017.
+ * Created by Sofia on 16.4.2017.
  */
 
-public class playFragment extends Fragment {
+public class RecordFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        View view = inflater.inflate(R.layout.play_fragment, container, false);
+        View view = inflater.inflate(R.layout.record_fragment, container, false);
         return view;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
     }
 }

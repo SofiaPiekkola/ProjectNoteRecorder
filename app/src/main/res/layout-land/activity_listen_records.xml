@@ -8,15 +8,15 @@
     >
 
     <fragment
-        android:name="com.sofia.noterecorder.fragments.listFragment"
+        android:name="com.sofia.noterecorder.fragments.ListFragment"
         android:id="@+id/recordingsListFragment"
         android:layout_width="0dp"
-        android:layout_weight="0.4"
+        android:layout_weight="0.5"
         android:layout_height="match_parent"
         tools:layout="@layout/list_fragment"/>
 
     <fragment
-        android:name="com.sofia.noterecorder.fragments.playFragment"
+        android:name="com.sofia.noterecorder.fragments.PlayFragment"
         android:layout_width="0dp"
         android:layout_weight="0.6"
         android:layout_height="match_parent"

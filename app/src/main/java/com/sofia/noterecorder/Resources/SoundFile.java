@@ -5,19 +5,28 @@ package com.sofia.noterecorder.Resources;
  */
 
 public class SoundFile {
-    int id;
     String name;
+    String path;
 
-    public SoundFile(int soundID, String name) {
-        this.id = soundID;
-        this.name = name;
+    public String getPath() {
+        return path;
     }
 
-    public int getSoundID() { return id; }
+    public void setPath(String path) {
+        this.path = path;
+    }
 
-    public void setSoundID(int soundID) { this.id = soundID; }
+    public SoundFile(String name, String path) {
+        this.name = name;
+        this.path = path + "/" + name;
+    }
 
     public String getName() { return name; }
 
     public void setName(String name) { this.name = name; }
+
+    @Override
+    public String toString() {
+        return name.replace(".3gp", "");
+    }
 }

@@ -13,7 +13,7 @@ import com.sofia.noterecorder.R;
  * Created by Sofia on 16.4.2017.
  */
 
-public class txtBtnFragment extends Fragment {
+public class TxtBtnFragment extends Fragment {
 
     @Nullable
     @Override
