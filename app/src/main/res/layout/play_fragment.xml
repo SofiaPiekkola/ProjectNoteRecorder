@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <Button
+        android:background="@drawable/selector_open"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:id="@+id/openClose"
+
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        />
+
+    <TextView
+        android:id="@+id/recOpen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Open"
+        android:textSize="20sp"
+        android:textAlignment="center"
+
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/openClose"
+        android:layout_alignRight="@+id/openClose"
+        android:layout_alignEnd="@+id/openClose"
+
+        android:layout_marginLeft="10dp"
+        />
+
+    <Button
+        android:background="@drawable/button_mail"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:id="@+id/mail"
+
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_above="@+id/recOpen"
+
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mail"
+        android:textSize="20sp"
+        android:textAlignment="center"
+
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/mail"
+        android:layout_alignLeft="@+id/mail"
+        android:layout_alignStart="@+id/mail"
+
+        android:layout_marginRight="10dp"
+        />
+
+    <Button
+        android:id="@+id/playStop"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:background="@drawable/selector_play"
+        android:layout_centerInParent="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rename"
+        android:textSize="20sp"
+        android:textAlignment="center"
+
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/rename"
+        android:layout_alignRight="@+id/rename"
+        android:layout_alignEnd="@+id/rename"
+
+        android:layout_marginLeft="10dp"/>
+
+    <Button
+        android:id="@+id/rename"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:background="@drawable/button_rename"
+
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="10dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete"
+        android:textSize="20sp"
+        android:textAlignment="center"
+
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_above="@+id/delete"
+        android:layout_alignLeft="@+id/delete"
+        android:layout_alignStart="@+id/delete"
+
+        android:layout_marginRight="10dp"/>
+
+    <Button
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:background="@drawable/button_delete"
+        android:id="@+id/delete"
+
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+         />
+</RelativeLayout>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+    <Button
+        android:id="@+id/btn1"
+        android:layout_gravity="center"
+        android:layout_marginBottom="15dp"
+
+        android:text="Listen recordings"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+
+        android:layout_width="match_parent"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_height="70dp"
+        android:background="@drawable/button_txt"
+        android:onClick="listenRecords"
+        />
+
+    <Button
+        android:id="@+id/btnRecDiff"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:text="Record sound"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@drawable/button_txt"
+        android:onClick="soundOrNote"
+        />
+
+</LinearLayout>
