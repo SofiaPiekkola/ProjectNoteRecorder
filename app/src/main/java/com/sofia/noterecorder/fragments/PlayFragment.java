@@ -4,16 +4,15 @@ import android.app.Fragment;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sofia.noterecorder.R;
 
+import java.io.File;
 import java.io.IOException;
 
 /**
@@ -27,8 +26,7 @@ public class PlayFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        View view = inflater.inflate(R.layout.play_fragment, container, false);
-        return view;
+        return inflater.inflate(R.layout.play_fragment, container, false);
     }
 
     public void initialiseButtons(String path, String name) {
@@ -36,12 +34,16 @@ public class PlayFragment extends Fragment {
         openButton();
         mailButton();
         renameButton();
-        deleteButton();
+        deleteButton(path);
     }
 
-    private void deleteButton() {
+    private void deleteButton(String path) {
         Button delete = (Button) getView().findViewById(R.id.delete);
-        delete.setOnClickListener((View v) -> Toast.makeText(getActivity(), "DELETE FILE", Toast.LENGTH_SHORT).show());
+        delete.setOnClickListener(v -> {
+            File file = new File(path);
+            file.delete();
+            getActivity().onBackPressed();
+        });
     }
 
     private void renameButton() {
@@ -65,11 +67,17 @@ public class PlayFragment extends Fragment {
     private void startPlay(String path, Button play) {
         if (play.isActivated()){
             play.setActivated(false);
+            mPlayer.stop();
         }
         else {
             play.setActivated(true);
             mPlayer = new MediaPlayer();
-            mPlayer.setOnCompletionListener(mp -> play.setActivated(false));
+            mPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mp) {
+                    play.setActivated(false);
+                }
+            });
             try {
                 mPlayer.setDataSource(path);
                 mPlayer.prepare();
@@ -79,23 +87,4 @@ public class PlayFragment extends Fragment {
             }
         }
     }
-
-
-//    public void openNote(View view) {
-//        if (view.isActivated())view.setActivated(false);
-//        else view.setActivated(true);
-//        Toast.makeText(this, "OPEN NOTE (" + view.isActivated() + ")", Toast.LENGTH_SHORT).show();
-//    }
-//
-//    public void sendMail(View view) {
-//        Toast.makeText(this, "SEND EMAIL", Toast.LENGTH_SHORT).show();
-//    }
-//
-//    public void renameFile(View view) {
-//        Toast.makeText(this, "RENAME FILE", Toast.LENGTH_SHORT).show();
-//    }
-//
-//    public void deleteRecord(View view) {
-//        Toast.makeText(this, "DELETE FILE", Toast.LENGTH_SHORT).show();
-//    }
 }
