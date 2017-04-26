@@ -19,6 +19,9 @@ public class PlayActivity extends AppCompatActivity {
         }
 
         setContentView(R.layout.activity_play);
+        String name = (String) getIntent().getExtras().get("name");
+        TextView textView = (TextView) findViewById(R.id.soundName);
+        if (textView != null) textView.setText(name.substring(0, name.length() - 4));
     }
 
     @Override
