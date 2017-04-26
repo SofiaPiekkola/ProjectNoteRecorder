@@ -1,13 +1,17 @@
 package com.sofia.noterecorder.fragments;
 
 import android.app.Fragment;
+import android.content.Context;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.sofia.noterecorder.R;
@@ -33,7 +37,7 @@ public class PlayFragment extends Fragment {
         playButton(path);
         openButton();
         mailButton();
-        renameButton();
+        renameButton(path, name);
         deleteButton(path);
     }
 
@@ -46,9 +50,39 @@ public class PlayFragment extends Fragment {
         });
     }
 
-    private void renameButton() {
+    private void renameButton(String path, String name) {
         Button rename = (Button) getView().findViewById(R.id.rename);
-        rename.setOnClickListener((View v) -> Toast.makeText(getActivity(), "RENAME FILE", Toast.LENGTH_SHORT).show());
+        rename.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText et = (EditText) getActivity().findViewById(R.id.soundName);
+                et.setEnabled(true);
+                et.setSelectAllOnFocus(true);
+                et.clearFocus();
+                et.requestFocus();
+                InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.showSoftInput(et, InputMethodManager.SHOW_IMPLICIT);
+                et.setOnEditorActionListener((v1, actionId, event) -> {
+                    boolean handled = false;
+                    if (actionId == EditorInfo.IME_ACTION_DONE) {
+                        System.out.println(et.getText());
+                        imm.hideSoftInputFromWindow(v1.getWindowToken(), 0);
+                        et.setEnabled(false);
+                        handled = true;
+                        renameFile(path, name, String.valueOf(et.getText()));
+                    }
+                    return handled;
+                });
+            }
+        });
+    }
+
+    private void renameFile(String path, String oldName, String newName) {
+        path = path.replace(oldName, "");
+        newName = newName+".3gp";
+        File from = new File(path, oldName);
+        File to = new File(path, newName);
+        from.renameTo(to);
     }
 
     private void mailButton() {
