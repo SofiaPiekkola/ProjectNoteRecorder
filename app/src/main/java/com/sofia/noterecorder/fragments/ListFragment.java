@@ -1,6 +1,7 @@
 package com.sofia.noterecorder.fragments;
 
 import android.app.Fragment;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -24,6 +25,7 @@ import java.util.ArrayList;
 public class ListFragment extends Fragment {
     ArrayList<SoundFile> notes = new ArrayList<>();
     ArrayList<SoundFile> sounds = new ArrayList<>();
+    public View row;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -52,10 +54,12 @@ public class ListFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if (row != null) row.setBackgroundResource(R.color.colorPrimaryDark);
+                row = view;
+                view.setBackgroundResource(R.color.colorPrimary);
                 ((ListenRecordsActivity)getActivity()).soundSelected(notes.get(position));
             }
         });
-
         return view;
     }
 }
