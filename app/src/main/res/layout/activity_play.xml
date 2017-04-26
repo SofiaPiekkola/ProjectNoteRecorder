@@ -6,15 +6,17 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark">
 
-    <TextView
+    <EditText
         android:id="@+id/soundName"
-        android:text="2017.12.23.001"
+        android:inputType="text"
         android:textAlignment="center"
         android:textSize="40sp"
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.2"/>
+        android:layout_weight="0.2"
+        android:enabled="false"
+        android:imeOptions="actionDone"/>
 
     <fragment
         android:name="com.sofia.noterecorder.fragments.PlayFragment"
