@@ -1,7 +1,9 @@
 package com.sofia.noterecorder.Activitys;
 
+import android.content.res.Configuration;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.sofia.noterecorder.R;
 import com.sofia.noterecorder.fragments.PlayFragment;
@@ -11,7 +13,15 @@ public class PlayActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            finish();
+            return;
+        }
+
         setContentView(R.layout.activity_play);
+        String name = (String) getIntent().getExtras().get("name");
+        TextView textView = (TextView) findViewById(R.id.soundName);
+        if (textView != null) textView.setText(name.substring(0, name.length() - 4));
     }
 
     @Override
