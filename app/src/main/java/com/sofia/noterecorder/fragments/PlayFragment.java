@@ -65,14 +65,15 @@ public class PlayFragment extends Fragment {
                 et.setOnEditorActionListener((v1, actionId, event) -> {
                     boolean handled = false;
                     if (actionId == EditorInfo.IME_ACTION_DONE) {
-                        System.out.println(et.getText());
                         imm.hideSoftInputFromWindow(v1.getWindowToken(), 0);
                         et.setEnabled(false);
                         handled = true;
                         renameFile(path, name, String.valueOf(et.getText()));
+                        getActivity().onBackPressed();
                     }
                     return handled;
                 });
+
             }
         });
     }
