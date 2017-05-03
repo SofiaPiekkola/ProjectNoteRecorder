@@ -76,4 +76,13 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ListenRecordsActivity.class);
         startActivity(intent);
     }
+
+    public void sendFeedBack(MenuItem item) {
+        Intent Email = new Intent(Intent.ACTION_SEND);
+        Email.setType("text/email");
+        Email.putExtra(Intent.EXTRA_EMAIL, new String[] { "noterecorder@outlook.com" });
+        Email.putExtra(Intent.EXTRA_SUBJECT, "Feedback");
+        Email.putExtra(Intent.EXTRA_TEXT, "Please add your feedback here");
+        startActivity(Intent.createChooser(Email, "Select your e-mail service:"));
+    }
 }
