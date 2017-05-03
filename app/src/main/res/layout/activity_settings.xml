@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:textSize="30sp"
+                android:layout_margin="10dp"
+                android:paddingTop="10dp"
+                android:text="Select record type:"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <RadioGroup
+                android:text="Default"
+                android:id="@+id/radioType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:textSize="20sp"
+                    android:id="@+id/typeTHREE_GPP"
+                    android:text="THREE_GPP"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:checked="true"/>
+
+                <RadioButton
+                    android:textSize="20sp"
+                    android:id="@+id/typeMPEG_4"
+                    android:text="MPEG_4"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent" />
+            </RadioGroup>
+
+            <TextView
+                android:paddingTop="20dp"
+                android:layout_margin="10dp"
+                android:text="Select language:"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"/>
+
+            <RadioGroup
+                android:id="@+id/radioLanguage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <RadioButton
+                    android:id="@+id/langEnglish"
+                    android:text="English"
+                    android:textSize="20sp"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:checked="true"/>
+
+                <RadioButton
+                    android:id="@+id/langFinnish"
+                    android:text="Suomi"
+                    android:textSize="20sp"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent" />
+            </RadioGroup>
+        </LinearLayout>
+    </ScrollView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0">
+
+        <Button
+            android:id="@+id/ready"
+            android:text="Ready!"
+            android:textSize="30sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_txt"
+            android:layout_marginBottom="5dp"
+            android:onClick="saveSettings"
+            />
+
+    </RelativeLayout>
+
+
+</LinearLayout>
