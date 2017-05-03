@@ -7,8 +7,8 @@ import android.widget.RadioGroup;
 import com.sofia.noterecorder.R;
 
 public class Settings extends BaseActivity {
-    static int appTheme = 1;
     static int language = 1;
+    public static int recordType = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,17 +17,17 @@ public class Settings extends BaseActivity {
     }
 
     public void saveSettings(View view) {
-        RadioGroup themeGroup = (RadioGroup) findViewById(R.id.radioTheme);
-        int selectedTheme = themeGroup.getCheckedRadioButtonId();
         RadioGroup langGroup = (RadioGroup) findViewById(R.id.radioLanguage);
         int selectedLang = langGroup.getCheckedRadioButtonId();
 
-        if(selectedTheme == R.id.themeDark) appTheme = 1;
-        else if(selectedTheme == R.id.themeColor) appTheme = 2;
-        else appTheme = 3;
+        RadioGroup typeGroup = (RadioGroup) findViewById(R.id.radioType);
+        int selectedType = typeGroup.getCheckedRadioButtonId();
 
         if (selectedLang == R.id.langEnglish)language = 1;
         else language = 2;
+
+        if (selectedType == R.id.typeTHREE_GPP) recordType = 1;
+        else recordType = 2;
 
         finish();
     }
