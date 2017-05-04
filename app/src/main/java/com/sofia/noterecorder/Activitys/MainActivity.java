@@ -14,7 +14,7 @@ import android.widget.Toast;
 import com.sofia.noterecorder.R;
 import com.sofia.noterecorder.Services.RecordService;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends MenuActivity {
     String noteState;
     private static final int REQUEST_RECORD_AUDIO_PERMISSION = 200;
     private boolean permissionToRecordAccepted = false;

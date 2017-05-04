@@ -1,14 +1,13 @@
 package com.sofia.noterecorder.Activitys;
 
 import android.content.res.Configuration;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
 import com.sofia.noterecorder.R;
 import com.sofia.noterecorder.fragments.PlayFragment;
 
-public class PlayActivity extends AppCompatActivity {
+public class PlayActivity extends MenuActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

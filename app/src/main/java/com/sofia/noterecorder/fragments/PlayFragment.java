@@ -2,7 +2,9 @@ package com.sofia.noterecorder.fragments;
 
 import android.app.Fragment;
 import android.content.Context;
+import android.content.Intent;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -36,7 +38,7 @@ public class PlayFragment extends Fragment {
     public void initialiseButtons(String path, String name) {
         playButton(path);
         openButton();
-        mailButton();
+        mailButton(path);
         renameButton(path, name);
         deleteButton(path);
     }
@@ -52,29 +54,26 @@ public class PlayFragment extends Fragment {
 
     private void renameButton(String path, String name) {
         Button rename = (Button) getView().findViewById(R.id.rename);
-        rename.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EditText et = (EditText) getActivity().findViewById(R.id.soundName);
-                et.setEnabled(true);
-                et.setSelectAllOnFocus(true);
-                et.clearFocus();
-                et.requestFocus();
-                InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.showSoftInput(et, InputMethodManager.SHOW_IMPLICIT);
-                et.setOnEditorActionListener((v1, actionId, event) -> {
-                    boolean handled = false;
-                    if (actionId == EditorInfo.IME_ACTION_DONE) {
-                        imm.hideSoftInputFromWindow(v1.getWindowToken(), 0);
-                        et.setEnabled(false);
-                        handled = true;
-                        renameFile(path, name, String.valueOf(et.getText()));
-                        getActivity().onBackPressed();
-                    }
-                    return handled;
-                });
+        rename.setOnClickListener(v -> {
+            EditText et = (EditText) getActivity().findViewById(R.id.soundName);
+            et.setEnabled(true);
+            et.setSelectAllOnFocus(true);
+            et.clearFocus();
+            et.requestFocus();
+            InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.showSoftInput(et, InputMethodManager.SHOW_IMPLICIT);
+            et.setOnEditorActionListener((v1, actionId, event) -> {
+                boolean handled = false;
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    imm.hideSoftInputFromWindow(v1.getWindowToken(), 0);
+                    et.setEnabled(false);
+                    handled = true;
+                    renameFile(path, name, String.valueOf(et.getText()));
+                    getActivity().onBackPressed();
+                }
+                return handled;
+            });
 
-            }
         });
     }
 
@@ -86,8 +85,17 @@ public class PlayFragment extends Fragment {
         from.renameTo(to);
     }
 
-    private void mailButton() {
-
+    private void mailButton(String path) {
+        Button mail = (Button) getView().findViewById(R.id.mail);
+        mail.setOnClickListener(v -> {
+            File fileIn = new File(path);
+            Uri u = Uri.fromFile(fileIn);
+            Intent Email = new Intent(Intent.ACTION_SEND);
+            Email.setType("text/email");
+            Email.putExtra(Intent.EXTRA_TEXT, "File attached");
+            Email.putExtra(Intent.EXTRA_STREAM, u);
+            startActivity(Intent.createChooser(Email, "Select your e-mail service:"));
+        });
     }
 
     private void openButton() {
