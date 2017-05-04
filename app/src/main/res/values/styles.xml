@@ -7,11 +7,12 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:colorBackground">@color/colorPrimaryDark</item>
+        <item name="android:itemBackground">@color/colorPrimary</item>
 
         <item name="android:textColor">@color/textColor</item>
-        <item name="android:textColorPrimaryInverse">@color/textColor</item>
-        <item name="android:textColorPrimaryInverseDisableOnly">@color/textColor</item>
         <item name="android:editTextColor">@color/textColor</item>
+        <item name="android:textColorSecondary">@color/textColor</item>
+        <item name="android:textColorPrimaryDisableOnly">@color/textColor</item>
         <item name="android:textColorHighlight">@color/colorPrimary</item>
     </style>
 
