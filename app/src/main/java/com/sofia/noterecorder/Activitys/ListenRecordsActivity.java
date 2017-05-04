@@ -2,15 +2,13 @@ package com.sofia.noterecorder.Activitys;
 
 import android.content.Intent;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.MenuItem;
 
 import com.sofia.noterecorder.R;
 import com.sofia.noterecorder.Resources.SoundFile;
 import com.sofia.noterecorder.fragments.PlayFragment;
 
-public class ListenRecordsActivity extends MenuActivity {
+public class ListenRecordsActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
