@@ -29,6 +29,8 @@ public class Settings extends BaseActivity {
         if (selectedType == R.id.typeTHREE_GPP) recordType = 1;
         else recordType = 2;
 
+        System.out.println(language + ", " + recordType);
+
         finish();
     }
 }

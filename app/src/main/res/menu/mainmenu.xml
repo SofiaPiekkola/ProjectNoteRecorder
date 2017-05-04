@@ -4,7 +4,8 @@
 
     <item
         android:title="Settings"
-        app:showAsAction="never">
+        app:showAsAction="never"
+        android:onClick="settings">
     </item>
 
     <item
