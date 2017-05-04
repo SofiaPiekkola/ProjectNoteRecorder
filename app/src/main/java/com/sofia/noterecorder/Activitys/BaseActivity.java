@@ -12,7 +12,7 @@ import com.sofia.noterecorder.R;
  * Created by Sofia on 3.5.2017.
  */
 
-public class MenuActivity extends AppCompatActivity {
+public class BaseActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -28,5 +28,10 @@ public class MenuActivity extends AppCompatActivity {
         Email.putExtra(Intent.EXTRA_SUBJECT, "Feedback");
         Email.putExtra(Intent.EXTRA_TEXT, "Please add your feedback here");
         startActivity(Intent.createChooser(Email, "Select your e-mail service:"));
+    }
+
+    public void settings(MenuItem item) {
+        Intent intent = new Intent(this, Settings.class);
+        startActivity(intent);
     }
 }
