@@ -7,7 +7,7 @@ import android.widget.TextView;
 import com.sofia.noterecorder.R;
 import com.sofia.noterecorder.fragments.PlayFragment;
 
-public class PlayActivity extends MenuActivity {
+public class PlayActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
