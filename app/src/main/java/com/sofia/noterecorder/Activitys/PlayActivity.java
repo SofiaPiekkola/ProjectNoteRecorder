@@ -44,7 +44,6 @@ public class PlayActivity extends BaseActivity {
     public void onDestroy(){
         super.onDestroy();
         try {
-            System.out.println("RIKO");
             unregisterReceiver(receiver);
         }catch (IllegalArgumentException e){
             System.out.println("Already unregistered");

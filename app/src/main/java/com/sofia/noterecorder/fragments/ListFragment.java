@@ -18,10 +18,6 @@ import com.sofia.noterecorder.Resources.SoundFile;
 import java.io.File;
 import java.util.ArrayList;
 
-/**
- * Created by Sofia on 17.4.2017.
- */
-
 public class ListFragment extends Fragment {
     ArrayList<SoundFile> notes = new ArrayList<>();
     ArrayList<SoundFile> sounds = new ArrayList<>();

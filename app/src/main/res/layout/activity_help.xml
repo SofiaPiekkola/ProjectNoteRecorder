@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/Header"
+                android:text="Rename file"/>
+            <TextView
+                style="@style/Paragraph"
+                android:text="To rename file, turn your phone to portrait orientation. Navigate to: Listen recordings --> Your file. Click the file name and give your file a new name."/>
+
+            <TextView
+                style="@style/Header"
+                android:text="Send file to e-mail"/>
+            <TextView
+                style="@style/Paragraph"
+                android:text="To send file to e-mail, navigate to: Listen recordings --> Your file. Click Mail and select your e-mail service."/>
+
+            <TextView
+                style="@style/Header"
+                android:text="Delete file"/>
+            <TextView
+                style="@style/Paragraph"
+                android:text="To delete file, navigate to: Listen recordings --> Your file. Click Delete and select OK."/>
+
+            <TextView
+                style="@style/Header"
+                android:text="Record types"/>
+            <TextView
+                style="@style/Paragraph"
+                android:text="To change record type open the menu from top right and select settings. Select type you want to use."/>
+
+            <TextView
+                style="@style/Header"
+                android:text="Language options"/>
+            <TextView
+                style="@style/Paragraph"
+                android:text="To change language open the menu from top right and select settings. Select language you want to use."/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
