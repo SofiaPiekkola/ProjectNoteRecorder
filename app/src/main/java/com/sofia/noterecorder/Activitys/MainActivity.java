@@ -57,8 +57,8 @@ public class MainActivity extends BaseActivity {
 
     public void soundOrNote(View view) {
         Button pressed = (Button) view;
-        if (pressed.getText().toString().toLowerCase().contains("note")) pressed.setText("Record sound");
-        else pressed.setText("Record note");
+        if (pressed.getText().toString().toLowerCase().contains("note")) pressed.setText(R.string.rec_sound);
+        else pressed.setText(R.string.rec_note);
     }
 
     public void listenRecords(View view) {

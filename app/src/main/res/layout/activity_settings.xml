@@ -19,12 +19,11 @@
                 android:textSize="30sp"
                 android:layout_margin="10dp"
                 android:paddingTop="10dp"
-                android:text="Select record type:"
+                android:text="@string/recType"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <RadioGroup
-                android:text="Default"
                 android:id="@+id/radioType"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -32,14 +31,14 @@
                 <RadioButton
                     android:textSize="20sp"
                     android:id="@+id/typeTHREE_GPP"
-                    android:text="THREE_GPP"
+                    android:text="@string/three_gpp"
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"/>
 
                 <RadioButton
                     android:textSize="20sp"
                     android:id="@+id/typeMPEG_4"
-                    android:text="MPEG_4"
+                    android:text="@string/mpeg_4"
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent" />
             </RadioGroup>
@@ -47,7 +46,7 @@
             <TextView
                 android:paddingTop="20dp"
                 android:layout_margin="10dp"
-                android:text="Select language:"
+                android:text="@string/language"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="30sp"/>
@@ -58,14 +57,14 @@
                 android:layout_height="wrap_content">
                 <RadioButton
                     android:id="@+id/langEnglish"
-                    android:text="English"
+                    android:text="@string/en"
                     android:textSize="20sp"
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"/>
 
                 <RadioButton
                     android:id="@+id/langFinnish"
-                    android:text="Suomi"
+                    android:text="@string/fi"
                     android:textSize="20sp"
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent" />
@@ -80,7 +79,7 @@
 
         <Button
             android:id="@+id/ready"
-            android:text="Ready!"
+            android:text="@string/ready"
             android:textSize="30sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
