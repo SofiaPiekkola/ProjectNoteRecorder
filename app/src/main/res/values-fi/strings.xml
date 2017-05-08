@@ -27,4 +27,5 @@
     <string name="send_feedback">Lähetä palautetta</string>
     <string name="help">Ohje</string>
     <string name="rec_note">Nauhoita muistiinpano</string>
+    <string name="confirm">Oletko varma, että haluat poistaa tämän tiedoston?</string>
 </resources>
