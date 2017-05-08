@@ -9,7 +9,7 @@
     <Button
         app:layout_aspectRatio="100%"
         app:layout_widthPercent="80%"
-
+        android:textSize="80sp"
         android:id="@+id/recBtn"
         android:background="@drawable/selector_mic"
 
