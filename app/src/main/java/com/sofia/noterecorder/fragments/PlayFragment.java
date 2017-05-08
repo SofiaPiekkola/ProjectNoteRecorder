@@ -1,12 +1,17 @@
 package com.sofia.noterecorder.fragments;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.Fragment;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.ThemedSpinnerAdapter;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -14,6 +19,9 @@ import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import com.sofia.noterecorder.R;
 
 import java.io.File;
@@ -41,9 +49,25 @@ public class PlayFragment extends Fragment {
     private void deleteButton(String path) {
         Button delete = (Button) getView().findViewById(R.id.delete);
         delete.setOnClickListener(v -> {
-            File file = new File(path);
-            file.delete();
-            getActivity().onBackPressed();
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                AlertDialog alertDialog = new AlertDialog.Builder(this.getContext(), R.style.AlertDialogStyle)
+                        .setMessage(R.string.confirm)
+                        .setPositiveButton(android.R.string.yes, (dialog, which) -> {
+                            File file = new File(path);
+                            file.delete();
+                            getActivity().onBackPressed();
+                        })
+                        .setNegativeButton(android.R.string.no, (dialog, which) -> {
+                        })
+                        .setIcon(android.R.drawable.ic_dialog_alert).create();
+                        alertDialog.setOnShowListener(dialog -> {
+                            alertDialog.getButton(Dialog.BUTTON_POSITIVE).setTextSize(15);
+                            alertDialog.getButton(Dialog.BUTTON_NEGATIVE).setTextSize(15);
+                        });
+                alertDialog.show();
+                TextView textView = (TextView) alertDialog.findViewById(android.R.id.message);
+                textView.setTextSize(20);
+            }
         });
     }
 

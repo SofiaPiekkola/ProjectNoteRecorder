@@ -1,12 +1,12 @@
 package com.sofia.noterecorder.Services;
 
+import com.sofia.noterecorder.Activitys.Settings;
 import android.app.Service;
 import android.content.Intent;
 import android.media.MediaRecorder;
+import android.os.Handler;
 import android.os.IBinder;
-
-import com.sofia.noterecorder.Activitys.Settings;
-
+import android.os.SystemClock;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -18,10 +18,16 @@ public class RecordService extends Service {
     String recordNote;
     private MediaRecorder recorder;
 
+    private long startHTime = 0L;
+    private Handler customHandler = new Handler();
+    long timeInMilliseconds = 0L;
+    long timeSwapBuff = 0L;
+    long updatedTime = 0L;
+    Intent broadcastIntent = new Intent("com.sofia.timeBroadcast");
+
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         super.onStartCommand(intent, flags, startId);
-
         recordNote = intent.getExtras().getString("note");
         boolean start = intent.getExtras().getBoolean("start");
 
@@ -51,10 +57,16 @@ public class RecordService extends Service {
         }
 
         recorder.start();
+        startHTime = SystemClock.uptimeMillis();
+        customHandler.postDelayed(updateTimerThread, 0);
     }
 
     private void stopRecording() {
         recorder.stop();
+        broadcastIntent.putExtra("time", "");
+        sendBroadcast(broadcastIntent);
+        timeSwapBuff += timeInMilliseconds;
+        customHandler.removeCallbacks(updateTimerThread);
         recorder.reset();
         recorder.release();
         recorder = null;
@@ -83,6 +95,20 @@ public class RecordService extends Service {
         }while (f.exists() || f2.exists());
         return mFileName + type;
     }
+
+    private Runnable updateTimerThread = new Runnable() {
+        public void run() {
+            timeInMilliseconds = SystemClock.uptimeMillis() - startHTime;
+            updatedTime = timeSwapBuff + timeInMilliseconds;
+            int secs = (int) (updatedTime / 1000);
+            int mins = secs / 60;
+            secs = secs % 60;
+            String time = String.format(Locale.ENGLISH, "%02d", mins) + ":" + String.format(Locale.ENGLISH, "%02d", secs);
+            broadcastIntent.putExtra("time", time);
+            sendBroadcast(broadcastIntent);
+            customHandler.postDelayed(this, 0);
+        }
+    };
 
     @Override
     public IBinder onBind(Intent intent) {
