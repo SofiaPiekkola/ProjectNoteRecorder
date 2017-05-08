@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.media.MediaRecorder;
 import android.os.IBinder;
 
+import com.sofia.noterecorder.Activitys.Settings;
+
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -64,17 +66,23 @@ public class RecordService extends Service {
         folder.mkdirs();
         String dateInString = new SimpleDateFormat("yyyy.MM.dd.", Locale.ENGLISH).format(new Date());
         File f;
+        File f2;
         int i = 0;
         String length = "%03d";
+        String type;
+        if (Settings.recordType == 1) type = ".3gp";
+        else type = ".mp4";
+
         do{
             i++;
             if((i + "").length() > 2) length = "%0" + (i + "").length() + "d";
             String s = String.format(Locale.ENGLISH, length, i);
-            String fileName = "/" + dateInString + s + ".3gp";
+            String fileName = "/" + dateInString + s;
             mFileName = folder.getPath() + fileName;
-            f = new File(mFileName);
-        }while (f.exists());
-        return mFileName;
+            f = new File(mFileName + ".3gp");
+            f2 = new File(mFileName + ".mp4");
+        }while (f.exists() || f2.exists());
+        return mFileName + type;
     }
 
     @Override
