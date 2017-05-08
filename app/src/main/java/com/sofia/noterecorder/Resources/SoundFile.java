@@ -1,9 +1,5 @@
 package com.sofia.noterecorder.Resources;
 
-/**
- * Created by Sofia on 18.4.2017.
- */
-
 public class SoundFile {
     String name;
     String path;
@@ -27,6 +23,7 @@ public class SoundFile {
 
     @Override
     public String toString() {
-        return name.replace(".3gp", "");
+        if (name.contains(".3gp")) return name.replace(".3gp", "");
+        else return name.replace(".mp4", "");
     }
 }
