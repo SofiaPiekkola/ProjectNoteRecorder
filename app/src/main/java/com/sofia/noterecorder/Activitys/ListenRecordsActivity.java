@@ -9,9 +9,6 @@ import com.sofia.noterecorder.R;
 import com.sofia.noterecorder.Resources.SoundFile;
 import com.sofia.noterecorder.fragments.PlayFragment;
 
-import java.util.Locale;
-import java.util.concurrent.TimeUnit;
-
 public class ListenRecordsActivity extends BaseActivity {
 
     @Override
