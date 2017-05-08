@@ -1,32 +1,27 @@
 package com.sofia.noterecorder.fragments;
 
 import android.app.Fragment;
-import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
-
 import com.sofia.noterecorder.R;
 
 import java.io.File;
 import java.io.IOException;
 
-/**
- * Created by Sofia on 17.4.2017.
- */
-
 public class PlayFragment extends Fragment {
     private MediaPlayer mPlayer;
+    private CountDownTimer countDownTimer;
 
     @Nullable
     @Override
@@ -35,8 +30,8 @@ public class PlayFragment extends Fragment {
         return inflater.inflate(R.layout.play_fragment, container, false);
     }
 
-    public void initialiseButtons(String path, String name) {
-        playButton(path);
+    public void initialiseButtons(String path, String name, int duration) {
+        playButton(path, duration);
         openButton();
         mailButton(path);
         renameButton(path, name);
@@ -53,28 +48,29 @@ public class PlayFragment extends Fragment {
     }
 
     private void renameButton(String path, String name) {
-        Button rename = (Button) getView().findViewById(R.id.rename);
-        rename.setOnClickListener(v -> {
-            EditText et = (EditText) getActivity().findViewById(R.id.soundName);
-            et.setEnabled(true);
-            et.setSelectAllOnFocus(true);
-            et.clearFocus();
-            et.requestFocus();
-            InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.showSoftInput(et, InputMethodManager.SHOW_IMPLICIT);
-            et.setOnEditorActionListener((v1, actionId, event) -> {
-                boolean handled = false;
-                if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    imm.hideSoftInputFromWindow(v1.getWindowToken(), 0);
-                    et.setEnabled(false);
-                    handled = true;
-                    renameFile(path, name, String.valueOf(et.getText()));
-                    getActivity().onBackPressed();
+        EditText soundName = (EditText) getActivity().findViewById(R.id.soundName);
+        if (soundName != null) {
+            soundName.setCursorVisible(false);
+            soundName.setOnTouchListener((v, eventMotion) -> {
+                if(MotionEvent.ACTION_UP == eventMotion.getAction()){
+                    soundName.setCursorVisible(true);
+                    soundName.setSelectAllOnFocus(true);
+                    soundName.clearFocus();
+                    soundName.requestFocus();
+                    soundName.setOnEditorActionListener((v1, actionId, event) -> {
+                        boolean handled = false;
+                        if (actionId == EditorInfo.IME_ACTION_DONE) {
+                            soundName.setEnabled(false);
+                            handled = true;
+                            renameFile(path, name, String.valueOf(soundName.getText()));
+                            getActivity().onBackPressed();
+                        }
+                        return handled;
+                    });
                 }
-                return handled;
+                return false;
             });
-
-        });
+        }
     }
 
     private void renameFile(String path, String oldName, String newName) {
@@ -102,25 +98,32 @@ public class PlayFragment extends Fragment {
 
     }
 
-    public void playButton(String path){
+    public void playButton(String path, int duration){
         Button play = (Button) getView().findViewById(R.id.playStop);
-        play.setOnClickListener((View v) -> startPlay(path, play));
+        play.setOnClickListener((View v) -> startPlay(path, play, duration));
     }
 
-    private void startPlay(String path, Button play) {
-        if (play.isActivated()){
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (mPlayer != null){
+            mPlayer.stop();
+            countDownTimer.cancel();
+            countDownTimer.onFinish();
+        }
+    }
+
+    private void startPlay(String path, Button play, int duration) {
+        if (play.isActivated()) {
             play.setActivated(false);
             mPlayer.stop();
-        }
-        else {
+            countDownTimer.cancel();
+            countDownTimer.onFinish();
+        } else {
             play.setActivated(true);
             mPlayer = new MediaPlayer();
-            mPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                @Override
-                public void onCompletion(MediaPlayer mp) {
-                    play.setActivated(false);
-                }
-            });
+            startTimer(duration);
+            mPlayer.setOnCompletionListener(mp -> play.setActivated(false));
             try {
                 mPlayer.setDataSource(path);
                 mPlayer.prepare();
@@ -129,5 +132,23 @@ public class PlayFragment extends Fragment {
                 System.out.println("Not working");
             }
         }
+    }
+
+    private void startTimer(int duration) {
+        Intent broadcastIntent = new Intent("com.sofia.musicBroadcast");
+        countDownTimer = new CountDownTimer((duration * 1000), 1000){
+            @Override
+            public void onTick(long millisUntilFinished) {
+                broadcastIntent.putExtra("duration", millisUntilFinished);
+                getActivity().sendBroadcast(broadcastIntent);
+            }
+
+            @Override
+            public void onFinish() {
+                long dur = ((long) duration) *1000;
+                broadcastIntent.putExtra("duration", dur);
+                getActivity().sendBroadcast(broadcastIntent);
+            }
+        }.start();
     }
 }
