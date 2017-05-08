@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NoteRecorder</string>
+    <string name="mailH">Lähetä tiedosto sähköpostiin</string>
+    <string name="mailP"><![CDATA[Lähettääksesi tiedoston sähköpostilla, navigoi: Kuuntele nauhoituksia —> Haluamasi tiedosto. Valitse postita ja valitse käyttämäsi sähköpostipalvelu.]]></string>
+    <string name="deleteH">Poista tiedosto</string>
+    <string name="deleteP"><![CDATA[Poistaaksesi tiedoston, navigoi: Kuuntele nauhoituksia —> Haluamasi tiedosto. Paina Poista ja valitse OK.]]></string>
+    <string name="recordH">Tiedostotyyppi</string>
+    <string name="recordP">Muuttaaksesi nauhoituksen tiedostotyyppiä, avaa menu oikeasta yläkulmasta ja valitse asetukset. Valitse haluamasi tyyppi ja paina Valmis!</string>
+    <string name="languageH">Kieliasetukset</string>
+    <string name="languageP">Vaihtaaksesi kieltä, avaa menu oikeasta yläkulmasta ja valitse asetukset. Valitse kieli jota haluat käyttää ja paina Valmis!</string>
+    <string name="renameH">Nimeä tiedosto</string>
+    <string name="renameP"><![CDATA[Muuttaaksesi tiedoston nimeä, käännä laitteesi pystyasentoon. Navigoi: Kuuntele nauhoituksia —> Haluamasi tiedosto. Paina tiedoston nimeä ja anna sille uusi nimi.]]></string>
+    <string name="recType">Valitse tiedostotyyppi:</string>
+    <string name="three_gpp">THREE_GPP</string>
+    <string name="mpeg_4">MPEG_4</string>
+    <string name="language">Valitse kieli:</string>
+    <string name="en">English</string>
+    <string name="fi">Suomi</string>
+    <string name="ready">Valmis!</string>
+    <string name="mail">Postita</string>
+    <string name="open">Avaa</string>
+    <string name="delete">Poista</string>
+    <string name="listen_rec">Kuuntele nauhoituksia</string>
+    <string name="rec_sound">Nauhoita ääni</string>
+    <string name="settings">Asetukset</string>
+    <string name="send_feedback">Lähetä palautetta</string>
+    <string name="help">Ohje</string>
+    <string name="rec_note">Nauhoita muistiinpano</string>
+</resources>
