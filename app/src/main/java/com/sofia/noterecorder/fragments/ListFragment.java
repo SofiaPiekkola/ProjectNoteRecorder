@@ -18,10 +18,6 @@ import com.sofia.noterecorder.Resources.SoundFile;
 import java.io.File;
 import java.util.ArrayList;
 
-/**
- * Created by Sofia on 17.4.2017.
- */
-
 public class ListFragment extends Fragment {
     ArrayList<SoundFile> notes = new ArrayList<>();
     ArrayList<SoundFile> sounds = new ArrayList<>();
@@ -51,14 +47,11 @@ public class ListFragment extends Fragment {
         ListView listView = (ListView) view.findViewById(R.id.list);
         ArrayAdapter<SoundFile> soundAdapter = new ArrayAdapter<>(getActivity(), R.layout.sound_file, notes);
         listView.setAdapter(soundAdapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (row != null) row.setBackgroundResource(R.color.colorPrimaryDark);
-                row = view;
-                view.setBackgroundResource(R.color.colorPrimary);
-                ((ListenRecordsActivity)getActivity()).soundSelected(notes.get(position));
-            }
+        listView.setOnItemClickListener((parent, view1, position, id) -> {
+            if (row != null) row.setBackgroundResource(R.color.colorPrimaryDark);
+            row = view1;
+            view1.setBackgroundResource(R.color.colorPrimary);
+            ((ListenRecordsActivity)getActivity()).soundSelected(notes.get(position));
         });
         return view;
     }
