@@ -19,6 +19,7 @@
         <activity android:name=".Activitys.ListenRecordsActivity" />
         <activity android:name=".Activitys.PlayActivity"/>
         <activity android:name=".Activitys.Settings" />
+        <activity android:name=".Activitys.Help" />
         <service
             android:name=".Services.RecordService"
             android:enabled="true"
