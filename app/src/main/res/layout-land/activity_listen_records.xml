@@ -17,7 +17,7 @@
     <fragment
         android:name="com.sofia.noterecorder.fragments.PlayFragment"
         android:layout_width="0dp"
-        android:layout_weight="0.6"
+        android:layout_weight="0.5"
         android:layout_height="match_parent"
         android:id="@+id/playFileFragment"
         tools:layout="@layout/play_fragment"/>
