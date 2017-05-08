@@ -3,27 +3,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark">
+    android:layout_height="match_parent">
 
     <EditText
         android:id="@+id/soundName"
         android:inputType="text"
         android:textAlignment="center"
         android:textSize="40sp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.2"
-        android:enabled="false"
-        android:imeOptions="actionDone"/>
+        android:layout_weight="0.15"
+        android:imeOptions="actionDone"
+        android:background="@null"/>
+
+    <!--Seekbar-->
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"/>
+
+    <TextView
+        android:id="@+id/timeLeft"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:layout_marginBottom="10dp"/>
 
     <fragment
+        android:id="@+id/playFileFragment"
         android:name="com.sofia.noterecorder.fragments.PlayFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.8"
-        android:id="@+id/playFileFragment"
-        tools:layout="@layout/play_fragment"/>
+        tools:layout="@layout/play_fragment" />
 
 </LinearLayout>

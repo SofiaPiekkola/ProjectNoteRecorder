@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:title="Settings"
+        app:showAsAction="never"
+        android:onClick="settings">
+    </item>
+
+    <item
+        android:title="Send feedback"
+        android:onClick="sendFeedBack"
+        app:showAsAction="never">
+    </item>
+
+    <item
+        android:title="Help"
+        app:showAsAction="never">
+    </item>
+
+</menu>
