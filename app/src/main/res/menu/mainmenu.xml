@@ -16,7 +16,8 @@
 
     <item
         android:title="Help"
-        app:showAsAction="never">
+        app:showAsAction="never"
+        android:onClick="help">
     </item>
 
 </menu>

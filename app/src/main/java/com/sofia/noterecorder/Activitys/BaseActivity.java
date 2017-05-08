@@ -34,4 +34,9 @@ public class BaseActivity extends AppCompatActivity {
         Intent intent = new Intent(this, Settings.class);
         startActivity(intent);
     }
+
+    public void help(MenuItem item) {
+        Intent intent = new Intent(this, Help.class);
+        startActivity(intent);
+    }
 }
