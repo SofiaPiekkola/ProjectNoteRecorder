@@ -75,7 +75,8 @@ public class PlayFragment extends Fragment {
 
     private void renameFile(String path, String oldName, String newName) {
         path = path.replace(oldName, "");
-        newName = newName+".3gp";
+        if (oldName.contains(".3gp")) newName = newName+".3gp";
+        else newName = newName + ".mp4";
         File from = new File(path, oldName);
         File to = new File(path, newName);
         from.renameTo(to);
