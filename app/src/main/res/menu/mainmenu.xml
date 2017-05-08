@@ -3,19 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:title="Settings"
+        android:title="@string/settings"
         app:showAsAction="never"
         android:onClick="settings">
     </item>
 
     <item
-        android:title="Send feedback"
+        android:title="@string/send_feedback"
         android:onClick="sendFeedBack"
         app:showAsAction="never">
     </item>
 
     <item
-        android:title="Help"
+        android:title="@string/help"
         app:showAsAction="never"
         android:onClick="help">
     </item>

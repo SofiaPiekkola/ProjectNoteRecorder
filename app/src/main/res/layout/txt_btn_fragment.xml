@@ -9,7 +9,7 @@
         android:layout_gravity="center"
         android:layout_marginBottom="15dp"
 
-        android:text="Listen recordings"
+        android:text="@string/listen_rec"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
 
@@ -25,7 +25,7 @@
         android:id="@+id/btnRecDiff"
         android:layout_gravity="center"
         android:layout_marginTop="15dp"
-        android:text="Record sound"
+        android:text="@string/rec_sound"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
 

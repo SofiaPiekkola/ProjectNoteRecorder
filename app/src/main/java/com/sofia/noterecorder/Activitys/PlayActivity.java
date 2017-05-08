@@ -6,13 +6,13 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.view.MotionEvent;
-import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.sofia.noterecorder.R;
 import com.sofia.noterecorder.fragments.PlayFragment;
+
+import java.util.Locale;
 
 public class PlayActivity extends BaseActivity {
     TextView timeLeft;
@@ -29,8 +29,10 @@ public class PlayActivity extends BaseActivity {
             setContentView(R.layout.activity_play);
             seekBar = (SeekBar) findViewById(R.id.seekBar);
             timeLeft = (TextView) findViewById(R.id.timeLeft);
+
             receiver = new MyBroadCastReceiver();
             registerReceiver(receiver, new IntentFilter("com.sofia.musicBroadcast"));
+
             TextView textView = (TextView) findViewById(R.id.soundName);
             String name = (String) getIntent().getExtras().get("name");
             textView.setText(name.substring(0, name.length() - 4));
@@ -48,7 +50,6 @@ public class PlayActivity extends BaseActivity {
         }catch (IllegalArgumentException e){
             System.out.println("Already unregistered");
         }
-
     }
 
     @Override
@@ -66,15 +67,16 @@ public class PlayActivity extends BaseActivity {
         seekBar.setMax(maxValue);
         seekBar.setOnTouchListener((view, motionEvent) -> true);
         int mins = maxValue / 60;
-        int secs = maxValue - (60 * mins);
-        timeLeft.setText(mins + ":" + secs);
+        int secs = maxValue % 60;
+        String time = String.format(Locale.ENGLISH, "%02d", mins) + ":" + String.format(Locale.ENGLISH, "%02d", secs);
+        timeLeft.setText(time);
     }
 
-    private void updateTime(int duration) {
-        int mins = duration / 60;
-        int secs = duration - (60 * mins);
-        timeLeft.setText(mins + ":" + secs);
-        seekBar.setProgress(maxValue - duration);
+    private void updateTime(int secs) {
+        int mins = secs / 60;
+        String time = String.format(Locale.ENGLISH, "%02d", mins) + ":" + String.format(Locale.ENGLISH, "%02d", (secs % 60));
+        timeLeft.setText(time);
+        seekBar.setProgress(maxValue - secs);
     }
 
     public class MyBroadCastReceiver extends BroadcastReceiver {
