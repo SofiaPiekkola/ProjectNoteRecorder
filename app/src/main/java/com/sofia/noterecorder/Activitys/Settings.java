@@ -1,7 +1,6 @@
 package com.sofia.noterecorder.Activitys;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -48,6 +47,7 @@ public class Settings extends BaseActivity {
         finish();
     }
 
+    @SuppressWarnings("deprecation")
     void getValues(){
         Locale current = getResources().getConfiguration().locale;
         boolean fi = current.toString().contains("FI");

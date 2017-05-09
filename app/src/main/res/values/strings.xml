@@ -5,9 +5,9 @@
     <string name="deleteH">Delete file</string>
     <string name="deleteP"><![CDATA[To delete file, navigate to: Listen recordings —> Your file. Click Delete and select OK.]]></string>
     <string name="recordH">Record types</string>
-    <string name="recordP">To change record type open the menu from top right and select settings. Select type you want to use.</string>
+    <string name="recordP">To change record type open the menu from top right and select settings. Select type you want to use and click OK!</string>
     <string name="languageH">Language options</string>
-    <string name="languageP">To change language open the menu from top right and select settings. Select language you want to use.</string>
+    <string name="languageP">To change language open the menu from top right and select settings. Select language you want to use and click OK!</string>
     <string name="renameH">Rename file</string>
     <string name="renameP"><![CDATA[To rename file, turn your phone to portrait orientation. Navigate to: Listen recordings —> Your file. Click the file name and give your file a new name.]]></string>
     <string name="recType">Select record type:</string>
@@ -16,7 +16,7 @@
     <string name="language">Select language:</string>
     <string name="en">English</string>
     <string name="fi">Suomi</string>
-    <string name="ready">Ready!</string>
+    <string name="ready">OK!</string>
     <string name="mail">Mail</string>
     <string name="open">Open</string>
     <string name="delete">Delete</string>
@@ -26,4 +26,8 @@
     <string name="send_feedback">Send feedback</string>
     <string name="help">Help</string>
     <string name="rec_note">Record note</string>
+    <string name="confirm">Are you sure you want to delete this file?</string>
+    <string name="openToast">This file is now opened.</string>
+    <string name="closeToast">This file is now closed.</string>
+    <string name="close">Close</string>
 </resources>
