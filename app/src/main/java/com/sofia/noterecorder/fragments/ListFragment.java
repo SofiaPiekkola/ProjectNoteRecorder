@@ -1,8 +1,10 @@
 package com.sofia.noterecorder.fragments;
 
 import android.app.Fragment;
-import android.graphics.Color;
+import android.app.FragmentTransaction;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,19 +45,39 @@ public class ListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        View view = inflater.inflate(R.layout.list_fragment, container, false);
+        View view = inflater.inflate(R.layout.list_notes, container, false);
         ListView listView = (ListView) view.findViewById(R.id.list);
-        ArrayAdapter<SoundFile> soundAdapter = new ArrayAdapter<>(getActivity(), R.layout.sound_file, notes);
+        ArrayAdapter<SoundFile> soundAdapter = new ArrayAdapter<>(getActivity(), R.layout.sound_file,  R.id.text, notes);
         listView.setAdapter(soundAdapter);
+        addClickListener(listView);
+        selectFirstIfInLandscape(listView);
+        return view;
+    }
+
+    private void selectFirstIfInLandscape(ListView listView) {
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            new Handler().post(new Runnable() {
+                @Override
+                public void run() {
+                    listView.performItemClick(listView.getChildAt(0), 0,
+                            listView.getAdapter().getItemId(0));
+                }
+            });
+        }
+    }
+
+    private void addClickListener(ListView listView) {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (row != null) row.setBackgroundResource(R.color.colorPrimaryDark);
-                row = view;
-                view.setBackgroundResource(R.color.colorPrimary);
-                ((ListenRecordsActivity)getActivity()).soundSelected(notes.get(position));
+                if (view != null) {
+                    if (row != null) row.setBackgroundResource(R.color.colorPrimaryDark);
+                    row = view;
+                    view.setBackgroundResource(R.color.colorPrimary);
+                    ((ListenRecordsActivity) getActivity()).soundSelected(notes.get(position));
+                }
+                else selectFirstIfInLandscape(listView);
             }
         });
-        return view;
     }
 }
