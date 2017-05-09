@@ -57,10 +57,9 @@ public class PlayActivity extends BaseActivity {
         super.onResume();
         String name = (String) getIntent().getExtras().get("name");
         String path = (String) getIntent().getExtras().get("path");
-        boolean open = (boolean) getIntent().getExtras().get("open");
         int duration = getIntent().getIntExtra("duration", 0);
         PlayFragment playFragment = (PlayFragment) getFragmentManager().findFragmentById(R.id.playFileFragment);
-        playFragment.initialiseButtons(path, name, duration, open);
+        playFragment.initialiseButtons(path, name, duration);
     }
 
     private void setSeekBar() {
