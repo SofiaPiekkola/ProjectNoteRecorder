@@ -34,7 +34,6 @@ public class ListFragment extends Fragment {
 
     private void createSounds(String file, ArrayList<SoundFile> list) {
         String path = getActivity().getExternalCacheDir().getAbsolutePath() + file;
-        System.out.println(path);
         File dir = new File(path);
         File[] files = dir.listFiles();
         if (files != null) {
