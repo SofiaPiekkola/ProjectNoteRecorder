@@ -1,9 +1,6 @@
 package com.sofia.noterecorder.fragments;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.Fragment;
-import android.content.DialogInterface;
+import android.app.*;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -11,7 +8,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.ThemedSpinnerAdapter;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -20,13 +16,10 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.sofia.noterecorder.R;
 
 import java.io.File;
 import java.io.IOException;
-
 public class PlayFragment extends Fragment {
     private MediaPlayer mPlayer;
     private CountDownTimer countDownTimer;
@@ -40,7 +33,6 @@ public class PlayFragment extends Fragment {
 
     public void initialiseButtons(String path, String name, int duration) {
         playButton(path, duration);
-        openButton();
         mailButton(path);
         renameButton(path, name);
         deleteButton(path);
@@ -117,10 +109,6 @@ public class PlayFragment extends Fragment {
             Email.putExtra(Intent.EXTRA_STREAM, u);
             startActivity(Intent.createChooser(Email, "Select your e-mail service:"));
         });
-    }
-
-    private void openButton() {
-
     }
 
     public void playButton(String path, int duration){
