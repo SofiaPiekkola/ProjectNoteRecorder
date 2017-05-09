@@ -1,9 +1,6 @@
 package com.sofia.noterecorder.fragments;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.Fragment;
-import android.content.DialogInterface;
+import android.app.*;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -11,7 +8,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.ThemedSpinnerAdapter;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -30,6 +26,7 @@ import java.io.IOException;
 public class PlayFragment extends Fragment {
     private MediaPlayer mPlayer;
     private CountDownTimer countDownTimer;
+    String path;
 
     @Nullable
     @Override
@@ -39,14 +36,51 @@ public class PlayFragment extends Fragment {
     }
 
     public void initialiseButtons(String path, String name, int duration) {
-        playButton(path, duration);
+        this.path = path;
+        playButton(duration);
+        mailButton();
+        renameButton(name);
+        deleteButton();
         openButton();
-        mailButton(path);
-        renameButton(path, name);
-        deleteButton(path);
     }
 
-    private void deleteButton(String path) {
+    private void openButton() {
+        Button open = (Button) getView().findViewById(R.id.openClose);
+        if (path.contains("open")) changeBtn(true, open);
+        else changeBtn(false, open);
+        open.setOnClickListener(v -> {
+            if (path.contains("open")){
+                setOpen("open", "close");
+                changeBtn(false, open);
+            }
+            else {
+                setOpen("close", "open");
+                changeBtn(true, open);
+            }
+        });
+    }
+
+    private void changeBtn(boolean b, Button open) {
+        TextView t = (TextView) getActivity().findViewById(R.id.recOpen);
+        open.setActivated(b);
+        if (b) t.setText(getString(R.string.close));
+        else t.setText(getString(R.string.open));
+    }
+
+    public void setOpen(String oldPath, String newPath) {
+        String changed = path.replace(oldPath, newPath);
+        File from = new File(path);
+        File to = new File(changed);
+        this.path = changed;
+        from.renameTo(to);
+        String toastText;
+        if (newPath.equals("open")) toastText = getString(R.string.openToast);
+        else toastText = getString(R.string.closeToast);
+
+        Toast.makeText(getActivity(), toastText, Toast.LENGTH_SHORT).show();
+    }
+
+    private void deleteButton() {
         Button delete = (Button) getView().findViewById(R.id.delete);
         delete.setOnClickListener(v -> {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -71,7 +105,7 @@ public class PlayFragment extends Fragment {
         });
     }
 
-    private void renameButton(String path, String name) {
+    private void renameButton(String name) {
         EditText soundName = (EditText) getActivity().findViewById(R.id.soundName);
         if (soundName != null) {
             soundName.setCursorVisible(false);
@@ -86,7 +120,7 @@ public class PlayFragment extends Fragment {
                         if (actionId == EditorInfo.IME_ACTION_DONE) {
                             soundName.setEnabled(false);
                             handled = true;
-                            renameFile(path, name, String.valueOf(soundName.getText()));
+                            renameFile(name, String.valueOf(soundName.getText()));
                             getActivity().onBackPressed();
                         }
                         return handled;
@@ -97,16 +131,16 @@ public class PlayFragment extends Fragment {
         }
     }
 
-    private void renameFile(String path, String oldName, String newName) {
-        path = path.replace(oldName, "");
+    private void renameFile(String oldName, String newName) {
+        String tempPath = path.replace(oldName, "");
         if (oldName.contains(".3gp")) newName = newName+".3gp";
         else newName = newName + ".mp4";
-        File from = new File(path, oldName);
-        File to = new File(path, newName);
+        File from = new File(tempPath, oldName);
+        File to = new File(tempPath, newName);
         from.renameTo(to);
     }
 
-    private void mailButton(String path) {
+    private void mailButton() {
         Button mail = (Button) getView().findViewById(R.id.mail);
         mail.setOnClickListener(v -> {
             File fileIn = new File(path);
@@ -119,13 +153,9 @@ public class PlayFragment extends Fragment {
         });
     }
 
-    private void openButton() {
-
-    }
-
-    public void playButton(String path, int duration){
+    public void playButton(int duration){
         Button play = (Button) getView().findViewById(R.id.playStop);
-        play.setOnClickListener((View v) -> startPlay(path, play, duration));
+        play.setOnClickListener((View v) -> startPlay(play, duration));
     }
 
     @Override
@@ -138,7 +168,7 @@ public class PlayFragment extends Fragment {
         }
     }
 
-    private void startPlay(String path, Button play, int duration) {
+    private void startPlay(Button play, int duration) {
         if (play.isActivated()) {
             play.setActivated(false);
             mPlayer.stop();

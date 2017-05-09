@@ -8,7 +8,7 @@
     <string name="recordH">Tiedostotyyppi</string>
     <string name="recordP">Muuttaaksesi nauhoituksen tiedostotyyppiä, avaa menu oikeasta yläkulmasta ja valitse asetukset. Valitse haluamasi tyyppi ja paina Valmis!</string>
     <string name="languageH">Kieliasetukset</string>
-    <string name="languageP">Vaihtaaksesi kieltä, avaa menu oikeasta yläkulmasta ja valitse asetukset. Valitse kieli jota haluat käyttää ja paina Valmis!</string>
+    <string name="languageP">Vaihtaaksesi kieltä, avaa menu oikeasta yläkulmasta ja valitse asetukset. Valitse kieli jota haluat käyttää ja paina OK!</string>
     <string name="renameH">Nimeä tiedosto</string>
     <string name="renameP"><![CDATA[Muuttaaksesi tiedoston nimeä, käännä laitteesi pystyasentoon. Navigoi: Kuuntele nauhoituksia —> Haluamasi tiedosto. Paina tiedoston nimeä ja anna sille uusi nimi.]]></string>
     <string name="recType">Valitse tiedostotyyppi:</string>
@@ -17,7 +17,7 @@
     <string name="language">Valitse kieli:</string>
     <string name="en">English</string>
     <string name="fi">Suomi</string>
-    <string name="ready">Valmis!</string>
+    <string name="ready">OK!</string>
     <string name="mail">Postita</string>
     <string name="open">Avaa</string>
     <string name="delete">Poista</string>
@@ -28,4 +28,7 @@
     <string name="help">Ohje</string>
     <string name="rec_note">Nauhoita muistiinpano</string>
     <string name="confirm">Oletko varma, että haluat poistaa tämän tiedoston?</string>
+    <string name="openToast">Tämä tiedosto on nyt avattu.</string>
+    <string name="closeToast">Tämä tiedosto on nyt suljettu.</string>
+    <string name="close">Sulje</string>
 </resources>

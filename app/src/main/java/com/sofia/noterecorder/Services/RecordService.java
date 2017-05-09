@@ -46,7 +46,8 @@ public class RecordService extends Service {
     private void startRecording() {
         recorder = new MediaRecorder();
         recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-        recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+        if (Settings.recordType == 1) recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+        else recorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
         recorder.setOutputFile(createFile());
         recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
 
@@ -65,16 +66,15 @@ public class RecordService extends Service {
         recorder.stop();
         broadcastIntent.putExtra("time", "");
         sendBroadcast(broadcastIntent);
-        timeSwapBuff += timeInMilliseconds;
         customHandler.removeCallbacks(updateTimerThread);
+        timeSwapBuff = 0L;
         recorder.reset();
         recorder.release();
         recorder = null;
     }
 
     public String createFile(){
-        File folder = new File(getExternalCacheDir().getAbsolutePath() + "/" + recordNote + "/");
-        folder.mkdirs();
+        File folder = new File(getExternalCacheDir().getAbsolutePath() + "/" + recordNote + "/open/");
         String dateInString = new SimpleDateFormat("yyyy.MM.dd.", Locale.ENGLISH).format(new Date());
         File f;
         File f2;

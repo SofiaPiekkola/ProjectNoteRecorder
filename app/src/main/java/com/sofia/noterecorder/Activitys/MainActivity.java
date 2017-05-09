@@ -16,6 +16,8 @@ import android.widget.Toast;
 import com.sofia.noterecorder.R;
 import com.sofia.noterecorder.Services.RecordService;
 
+import java.io.File;
+
 public class MainActivity extends BaseActivity {
     String noteState;
     private static final int REQUEST_RECORD_AUDIO_PERMISSION = 200;
@@ -30,6 +32,7 @@ public class MainActivity extends BaseActivity {
         timeReceiver = new TimeReceiver();
         registerReceiver(timeReceiver, new IntentFilter("com.sofia.timeBroadcast"));
         ActivityCompat.requestPermissions(this, permissions, REQUEST_RECORD_AUDIO_PERMISSION);
+        createSaveDirs();
     }
 
     @Override
@@ -58,8 +61,10 @@ public class MainActivity extends BaseActivity {
 
     public void record(View view) {
         Button b = (Button) findViewById(R.id.btnRecDiff);
-        if (!b.getText().toString().toLowerCase().contains("note")) noteState = "notes";
-        else noteState = "sounds";
+        System.out.println(b.getText().toString().toLowerCase());
+        if (b.getText().toString().toLowerCase().contains("note") ||
+                b.getText().toString().toLowerCase().contains("muistiin")) noteState = "sounds";
+        else noteState = "notes";
 
         if (view.isActivated()) view.setActivated(false);
         else view.setActivated(true);
@@ -72,7 +77,9 @@ public class MainActivity extends BaseActivity {
 
     public void soundOrNote(View view) {
         Button pressed = (Button) view;
-        if (pressed.getText().toString().toLowerCase().contains("note") || pressed.getText().toString().toLowerCase().contains("muistiin")) pressed.setText(R.string.rec_sound);
+        if (pressed.getText().toString().toLowerCase().contains("note") ||
+                pressed.getText().toString().toLowerCase().contains("muistiin"))
+            pressed.setText(R.string.rec_sound);
         else pressed.setText(R.string.rec_note);
     }
 
@@ -88,5 +95,16 @@ public class MainActivity extends BaseActivity {
             String time = intent.getStringExtra("time");
             b.setText(time);
         }
+    }
+
+    private void createSaveDirs() {
+        File folder = new File(getExternalCacheDir().getAbsolutePath() + "/sounds/open/");
+        folder.mkdirs();
+        folder = new File(getExternalCacheDir().getAbsolutePath() + "/notes/open/");
+        folder.mkdirs();
+        folder = new File(getExternalCacheDir().getAbsolutePath() + "/sounds/close/");
+        folder.mkdirs();
+        folder = new File(getExternalCacheDir().getAbsolutePath() + "/notes/close/");
+        folder.mkdirs();
     }
 }
