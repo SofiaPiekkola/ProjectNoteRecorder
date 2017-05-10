@@ -10,16 +10,27 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-
 import com.sofia.noterecorder.R;
-
 import java.util.Locale;
 
+/**
+ * @author Sofia Piekkola
+ * @version 1.0
+ * @since 10.5.2017
+ *
+ *
+ * Settings displays the settings view.
+ */
 public class Settings extends BaseActivity {
     private static int language = 1;
     public static int recordType = 1;
     private SharedPreferences sharedPref;
 
+    /**
+     * Creates the settings view
+     *
+     * @param savedInstanceState - mapping from String keys
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +39,12 @@ public class Settings extends BaseActivity {
         getValues();
     }
 
+    /**
+     * Saves the selected settings
+     * Called when user clicks OK!
+     *
+     * @param view - button clicked, not used.
+     */
     @SuppressWarnings("UnusedParameters")
     public void saveSettings(View view) {
         RadioGroup langGroup = (RadioGroup) findViewById(R.id.radioLanguage);
@@ -46,6 +63,9 @@ public class Settings extends BaseActivity {
         finish();
     }
 
+    /**
+     * Gets the previously saved settings.
+     */
     @SuppressWarnings("deprecation")
     private void getValues(){
         Locale current;
@@ -71,6 +91,9 @@ public class Settings extends BaseActivity {
         setLocale(lang);
     }
 
+    /**
+     * Saves the settings to future use.
+     */
     private void saveSelected(){
         SharedPreferences.Editor editor = sharedPref.edit();
         RadioButton rb = (RadioButton)findViewById(R.id.langEnglish);
@@ -91,6 +114,11 @@ public class Settings extends BaseActivity {
         setLocale(lang);
     }
 
+    /**
+     * Sets the localization based on the user selection.
+     *
+     * @param lang - language selected
+     */
     @SuppressWarnings("deprecation")
     private void setLocale(String lang) {
         Locale myLocale = new Locale(lang);
