@@ -5,11 +5,23 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-
 import com.sofia.noterecorder.R;
 
+/**
+ * @author Sofia Piekkola
+ * @version 1.0
+ * @since 10.5.2017
+ *
+ *
+ * BaseActivity displays the menu. This is the base class for all other activities.
+ */
 @SuppressWarnings("UnusedParameters")
 public class BaseActivity extends AppCompatActivity {
+    /**
+     * Creates menu
+     * @param menu - menu to be created
+     * @return - true if successful
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -17,7 +29,12 @@ public class BaseActivity extends AppCompatActivity {
         return true;
     }
 
-
+    /**
+     * Sends feedback via email
+     * Called when user clicks send feedback from menu.
+     *
+     * @param item - pressed button, not used
+     */
     public void sendFeedBack(MenuItem item) {
         Intent Email = new Intent(Intent.ACTION_SEND);
         Email.setType("text/email");
@@ -27,11 +44,23 @@ public class BaseActivity extends AppCompatActivity {
         startActivity(Intent.createChooser(Email, getString(R.string.selectMail)));
     }
 
+    /**
+     * Opens settings view
+     * Called when user clicks settings from menu.
+     *
+     * @param item - pressed button, not used
+     */
     public void settings(MenuItem item) {
         Intent intent = new Intent(this, Settings.class);
         startActivity(intent);
     }
 
+    /**
+     * Opens help view
+     * Called when user clicks help from menu.
+     *
+     * @param item - pressed button, not used
+     */
     public void help(MenuItem item) {
         Intent intent = new Intent(this, Help.class);
         startActivity(intent);
