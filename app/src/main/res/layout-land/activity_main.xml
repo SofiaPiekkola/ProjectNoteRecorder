@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!--Layout of the first view in landscape-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:baselineAligned="false"
-    >
+    android:baselineAligned="false">
 
     <fragment
         android:name="com.sofia.noterecorder.fragments.TxtBtnFragment"
@@ -21,6 +22,4 @@
         android:layout_height="match_parent"
         android:id="@+id/recordFragment"
         tools:layout="@layout/fragment_record" />
-
-
 </LinearLayout>

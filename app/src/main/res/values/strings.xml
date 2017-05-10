@@ -1,3 +1,4 @@
+<!--Strings for default language, english-->
 <resources>
     <string name="app_name">NoteRecorder</string>
     <string name="whatH">What is NoteRecorder?</string>

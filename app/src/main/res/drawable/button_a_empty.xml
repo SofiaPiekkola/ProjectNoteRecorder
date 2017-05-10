@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!--This is the base of all the round buttons used in the app-->
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:left="10dp" android:top="10dp">
         <shape>

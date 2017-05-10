@@ -1,5 +1,6 @@
 <resources>
 
+    <!--Default style-->
     <style name="DefaultTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -14,6 +15,7 @@
         <item name="android:textColorHighlight">@color/colorPrimary</item>
     </style>
 
+    <!--Tab style-->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -28,6 +30,7 @@
         <item name="android:textColorHighlight">@color/colorPrimary</item>
     </style>
 
+    <!--Headers in help view-->
     <style name="Header">
         <item name="android:layout_margin">5dp</item>
         <item name="android:layout_marginTop">20dp</item>
@@ -36,6 +39,7 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
+    <!--Paragraphs in help view-->
     <style name="Paragraph">
         <item name="android:layout_margin">5dp</item>
         <item name="android:textSize">15sp</item>
@@ -43,6 +47,7 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
+    <!--Alertdialog fired when delete is called-->
     <style name="AlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textColorPrimary">#FFFFFF</item>
