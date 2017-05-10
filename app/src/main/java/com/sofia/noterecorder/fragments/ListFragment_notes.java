@@ -11,19 +11,43 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import com.sofia.noterecorder.Activities.ListenRecordsActivity;
 import com.sofia.noterecorder.R;
 import com.sofia.noterecorder.Resources.SoundFile;
-
 import java.io.File;
 import java.util.ArrayList;
 
+/**
+ * @author Sofia Piekkola
+ * @version 1.0
+ * @since 10.5.2017
+ *
+ *
+ * ListFragment_notes displays the list of notes used in the first tab of portrait orientation
+ * This fragment is used also on the landscape view to display both notes and sounds.
+ */
 public class ListFragment_notes extends Fragment {
+
+    /**
+     * List of all the notes in directory.
+     */
     private final ArrayList<SoundFile> notes = new ArrayList<>();
+
+    /**
+     * One row of the list
+     */
     private View row;
+
+    /**
+     * True if the view is not set.
+     */
     private boolean viewNull;
 
+    /**
+     * Creates the list view
+     *
+     * @param savedInstanceState - mapping from String keys
+     */
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,16 +60,27 @@ public class ListFragment_notes extends Fragment {
         }
     }
 
-    private void createSounds(String file) {
-        @SuppressWarnings("ConstantConditions")
-        String path = getActivity().getExternalCacheDir().getAbsolutePath() + file;
+    /**
+     * Creates sounds to be displayed in the list
+     *
+     * @param path - end part of the path that contains sounds
+     */
+    @SuppressWarnings("ConstantConditions")
+    private void createSounds(String path) {
+        path = getActivity().getExternalCacheDir().getAbsolutePath() + path;
         File dir = new File(path);
         File[] files = dir.listFiles();
-        if (files != null) {
-            for (File f : files) notes.add(new SoundFile(f.getName(), path));
-        }
+        if (files != null) for (File f : files) notes.add(new SoundFile(f.getName(), path));
     }
 
+    /**
+     * Instantiates the view
+     *
+     * @param inflater - used to inflate any views in the fragment
+     * @param container - parent view that the fragment's UI is attached to
+     * @param savedInstanceState - a previous saved state
+     * @return - view for the fragment's UI
+     */
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -60,6 +95,11 @@ public class ListFragment_notes extends Fragment {
         return view;
     }
 
+    /**
+     * Selects first item from the list if in landscape mode
+     *
+     * @param listView - list that contains sound items
+     */
     private void selectFirstIfInLandscape(ListView listView) {
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
             new Handler().post(() -> listView.performItemClick(listView.getChildAt(0), 0,
@@ -67,6 +107,11 @@ public class ListFragment_notes extends Fragment {
         }
     }
 
+    /**
+     * Add click listener for all the sounds in the list
+     *
+     * @param listView - list that contains sound items
+     */
     private void addClickListener(ListView listView) {
         listView.setOnItemClickListener((parent, view, position, id) -> {
             if (view != null){
@@ -82,6 +127,11 @@ public class ListFragment_notes extends Fragment {
         });
     }
 
+    /**
+     * Adds markers for all the sounds in the list
+     *
+     * @param listView - list that contains sound items
+     */
     private void addOpenNoteMarkers(ListView listView) {
         listView.post(() -> {
             for (int i = 0; i < listView.getLastVisiblePosition() + 1; i++) {
