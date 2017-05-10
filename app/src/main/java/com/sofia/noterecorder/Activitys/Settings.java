@@ -51,6 +51,7 @@ public class Settings extends BaseActivity {
     void getValues(){
         Locale current = getResources().getConfiguration().locale;
         boolean fi = current.toString().contains("FI");
+        if (fi) language = 2;
 
         RadioButton rb = (RadioButton)findViewById(R.id.langEnglish);
         rb.setChecked(sharedPref.getBoolean("langEnglish", !fi));
@@ -61,6 +62,11 @@ public class Settings extends BaseActivity {
         rb.setChecked(sharedPref.getBoolean("typeTHREE_GPP", true));
         rb = (RadioButton)findViewById(R.id.typeMPEG_4);
         rb.setChecked(sharedPref.getBoolean("typeMPEG_4", false));
+
+        String lang;
+        if (language == 1) lang = "en";
+        else lang = "fi";
+        setLocale(lang);
     }
 
     void saveSelected(){
