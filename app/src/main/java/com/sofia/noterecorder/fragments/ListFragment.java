@@ -1,6 +1,6 @@
 package com.sofia.noterecorder.fragments;
 
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -24,20 +23,26 @@ import java.util.ArrayList;
 public class ListFragment extends Fragment {
     ArrayList<SoundFile> notes = new ArrayList<>();
     public View row;
+    boolean viewNull;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        createSounds("/notes/open", notes);
-        createSounds("/notes/close", notes);
+        viewNull = true;
+        createSounds("/notes/open");
+        createSounds("/notes/close");
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            createSounds("/sounds/open");
+            createSounds("/sounds/close");
+        }
     }
 
-    private void createSounds(String file, ArrayList<SoundFile> list) {
+    private void createSounds(String file) {
         String path = getActivity().getExternalCacheDir().getAbsolutePath() + file;
         File dir = new File(path);
         File[] files = dir.listFiles();
         if (files != null) {
-            for (File f : files) list.add(new SoundFile(f.getName(), path));
+            for (File f : files) notes.add(new SoundFile(f.getName(), path));
         }
     }
 
@@ -71,13 +76,16 @@ public class ListFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (view != null) {
+                if (view != null){
                     if (row != null) row.setBackgroundResource(R.color.colorPrimaryDark);
                     row = view;
                     view.setBackgroundResource(R.color.colorPrimary);
                     ((ListenRecordsActivity) getActivity()).soundSelected(notes.get(position));
                 }
-                else selectFirstIfInLandscape(listView);
+                else if (viewNull){
+                    viewNull = false;
+                    selectFirstIfInLandscape(listView);
+                }
             }
         });
     }
@@ -90,9 +98,8 @@ public class ListFragment extends Fragment {
                     View v = listView.getChildAt(i -
                             listView.getFirstVisiblePosition() + listView.getHeaderViewsCount());
                     if (v != null) {
-                        System.out.println(notes.get(i).getPath());
                         TextView b = (TextView) v.findViewById(R.id.open_btn);
-                        if (notes.get(i).getPath().contains("open")) b.setVisibility(View.VISIBLE);
+                        if (notes.get(i).getPath().contains("notes/open")) b.setVisibility(View.VISIBLE);
                         else b.setVisibility(View.INVISIBLE);
                     }
                 }
