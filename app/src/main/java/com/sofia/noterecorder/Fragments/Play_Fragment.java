@@ -2,6 +2,7 @@ package com.sofia.noterecorder.Fragments;
 
 import android.app.*;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
@@ -125,6 +126,8 @@ public class Play_Fragment extends Fragment {
         if (newPath.equals("open")) toastText = getString(R.string.openToast);
         else toastText = getString(R.string.closeToast);
         Toast.makeText(getActivity(), toastText, Toast.LENGTH_SHORT).show();
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE)
+            getActivity().onBackPressed();
     }
 
     /**
