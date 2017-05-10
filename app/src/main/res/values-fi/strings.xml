@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">NoteRecorder</string>
+    <string name="whatH">Mikä on NoteRecorder?</string>
+    <string name="whatP">NoteRecorderin avulla nauhoitat helposti ja nopeasti muistiinpanoja. Ei enää tarvetta kantaa kyniä ja paperia mukana.</string>
+    <string name="openH">Avoinaiset ja suljetut muistiinpanot</string>
+    <string name="openP">Voit asettaa muistiinpanoja avatuiksi tai suljetuiksi. Näin pysyt aina kärryillä siitä, mitä tehtäviä on vielä tekemättä.</string>
     <string name="mailH">Lähetä tiedosto sähköpostiin</string>
-    <string name="mailP"><![CDATA[Lähettääksesi tiedoston sähköpostilla, navigoi: Kuuntele nauhoituksia —> Haluamasi tiedosto. Valitse postita ja valitse käyttämäsi sähköpostipalvelu.]]></string>
-    <string name="deleteH">Poista tiedosto</string>
-    <string name="deleteP"><![CDATA[Poistaaksesi tiedoston, navigoi: Kuuntele nauhoituksia —> Haluamasi tiedosto. Paina Poista ja valitse OK.]]></string>
-    <string name="recordH">Tiedostotyyppi</string>
-    <string name="recordP">Muuttaaksesi nauhoituksen tiedostotyyppiä, avaa menu oikeasta yläkulmasta ja valitse asetukset. Valitse haluamasi tyyppi ja paina Valmis!</string>
-    <string name="languageH">Kieliasetukset</string>
-    <string name="languageP">Vaihtaaksesi kieltä, avaa menu oikeasta yläkulmasta ja valitse asetukset. Valitse kieli jota haluat käyttää ja paina OK!</string>
+    <string name="mailP">Voit lähettää minkä tahansa äänitiedoston sähköpostiin ja käyttää näin ollen NoteRecorderia myös tavallisena ääninauhurina.</string>
+    <string name="settingsH">Tiedostotyyppi ja kieli</string>
+    <string name="settingsP">Muuttaaksesi nauhoituksen tiedostotyyppiä tai vaihtaaksesi kieltä, avaa menu oikeasta yläkulmasta ja valitse asetukset. Valitse haluamasi tyyppi ja paina Valmis!</string>
     <string name="renameH">Nimeä tiedosto</string>
-    <string name="renameP"><![CDATA[Muuttaaksesi tiedoston nimeä, käännä laitteesi pystyasentoon. Navigoi: Kuuntele nauhoituksia —> Haluamasi tiedosto. Paina tiedoston nimeä ja anna sille uusi nimi.]]></string>
+    <string name="renameP">Jos haluat nimetä tiedoston uudelleen, käännä laitteesi pystyasentoon ja klikkaa nauhoitteen nimeä.</string>
     <string name="recType">Valitse tiedostotyyppi:</string>
     <string name="three_gpp">THREE_GPP</string>
     <string name="mpeg_4">MPEG_4</string>
@@ -21,14 +21,18 @@
     <string name="mail">Postita</string>
     <string name="open">Avaa</string>
     <string name="delete">Poista</string>
-    <string name="listen_rec">Kuuntele nauhoituksia</string>
+    <string name="listen_rec">Nauhoitukset</string>
     <string name="rec_sound">Nauhoita ääni</string>
     <string name="settings">Asetukset</string>
     <string name="send_feedback">Lähetä palautetta</string>
     <string name="help">Ohje</string>
     <string name="rec_note">Nauhoita muistiinpano</string>
     <string name="confirm">Oletko varma, että haluat poistaa tämän tiedoston?</string>
-    <string name="openToast">Tämä tiedosto on nyt avattu.</string>
-    <string name="closeToast">Tämä tiedosto on nyt suljettu.</string>
+    <string name="openToast">Tämä muistiinpano on nyt avattu.</string>
+    <string name="closeToast">Tämä muistiinpano on nyt suljettu.</string>
     <string name="close">Sulje</string>
+    <string name="notes">Muistiinpanot</string>
+    <string name="sounds">Äänitiedostot</string>
+    <string name="setToNote">Nauhoituksen tyyppi asetettu äänitiedostoksi</string>
+    <string name="setToSound">Nauhoituksen tyyppi asetettu muistiinpanoksi</string>
 </resources>
