@@ -12,10 +12,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-
 import com.sofia.noterecorder.R;
 import com.sofia.noterecorder.Services.RecordService;
-
 import java.io.File;
 
 /**
