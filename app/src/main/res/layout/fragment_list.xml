@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.sofia.noterecorder.fragments.ListFragment_sounds">
+    tools:context="com.sofia.noterecorder.Fragments.List_sounds_Fragment">
 
     <ListView
         android:id="@+id/list"

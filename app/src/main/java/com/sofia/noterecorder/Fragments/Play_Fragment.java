@@ -1,4 +1,4 @@
-package com.sofia.noterecorder.fragments;
+package com.sofia.noterecorder.Fragments;
 
 import android.app.*;
 import android.content.Intent;
@@ -27,10 +27,10 @@ import java.io.IOException;
  * @since 10.5.2017
  *
  *
- * PlayFragment displays the play view used to display selected sound file.
+ * Play_Fragment displays the play view used to display selected sound file.
  */
 @SuppressWarnings({"ConstantConditions", "ResultOfMethodCallIgnored"})
-public class PlayFragment extends Fragment {
+public class Play_Fragment extends Fragment {
     private MediaPlayer mPlayer;
     private CountDownTimer countDownTimer;
     private String path;

@@ -1,4 +1,4 @@
-package com.sofia.noterecorder.fragments;
+package com.sofia.noterecorder.Fragments;
 
 import android.support.v4.app.Fragment;
 import android.content.res.Configuration;
@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.sofia.noterecorder.Activities.ListenRecordsActivity;
+import com.sofia.noterecorder.Activities.Records_Activity;
 import com.sofia.noterecorder.R;
 import com.sofia.noterecorder.Resources.SoundFile;
 import java.io.File;
@@ -23,10 +23,10 @@ import java.util.ArrayList;
  * @since 10.5.2017
  *
  *
- * ListFragment_notes displays the list of notes used in the first tab of portrait orientation
+ * List_notes_Fragment displays the list of notes used in the first tab of portrait orientation
  * This fragment is used also on the landscape view to display both notes and sounds.
  */
-public class ListFragment_notes extends Fragment {
+public class List_notes_Fragment extends Fragment {
 
     /**
      * List of all the notes in directory.
@@ -118,7 +118,7 @@ public class ListFragment_notes extends Fragment {
                 if (row != null) row.setBackgroundResource(R.color.colorPrimaryDark);
                 row = view;
                 view.setBackgroundResource(R.color.colorPrimary);
-                ((ListenRecordsActivity) getActivity()).soundSelected(notes.get(position));
+                ((Records_Activity) getActivity()).soundSelected(notes.get(position));
             }
             else if (viewNull){
                 viewNull = false;

@@ -4,8 +4,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.sofia.noterecorder.fragments.ListFragment_notes;
-import com.sofia.noterecorder.fragments.ListFragment_sounds;
+import com.sofia.noterecorder.Fragments.List_notes_Fragment;
+import com.sofia.noterecorder.Fragments.List_sounds_Fragment;
 
 /**
  * @author Sofia Piekkola
@@ -42,9 +42,9 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return new ListFragment_notes();
+                return new List_notes_Fragment();
             case 1:
-                return new ListFragment_sounds();
+                return new List_sounds_Fragment();
             default:
                 return null;
         }

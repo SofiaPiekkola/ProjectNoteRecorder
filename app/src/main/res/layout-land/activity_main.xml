@@ -8,7 +8,7 @@
     android:baselineAligned="false">
 
     <fragment
-        android:name="com.sofia.noterecorder.fragments.TxtBtnFragment"
+        android:name="com.sofia.noterecorder.Fragments.Buttons_Fragment"
         android:layout_width="0dp"
         android:layout_weight="0.4"
         android:layout_height="match_parent"
@@ -16,7 +16,7 @@
         tools:layout="@layout/fragment_txt_btns" />
 
     <fragment
-        android:name="com.sofia.noterecorder.fragments.RecordFragment"
+        android:name="com.sofia.noterecorder.Fragments.Record_Fragment"
         android:layout_width="0dp"
         android:layout_weight="0.6"
         android:layout_height="match_parent"

@@ -13,10 +13,10 @@ import com.sofia.noterecorder.R;
  * @since 10.5.2017
  *
  *
- * BaseActivity displays the menu. This is the base class for all other activities.
+ * Base_Activity displays the menu. This is the base class for all other activities.
  */
 @SuppressWarnings("UnusedParameters")
-public class BaseActivity extends AppCompatActivity {
+public class Base_Activity extends AppCompatActivity {
     /**
      * Creates menu
      * @param menu - menu to be created
@@ -51,7 +51,7 @@ public class BaseActivity extends AppCompatActivity {
      * @param item - pressed button, not used
      */
     public void settings(MenuItem item) {
-        Intent intent = new Intent(this, Settings.class);
+        Intent intent = new Intent(this, Settings_Activity.class);
         startActivity(intent);
     }
 
@@ -62,7 +62,7 @@ public class BaseActivity extends AppCompatActivity {
      * @param item - pressed button, not used
      */
     public void help(MenuItem item) {
-        Intent intent = new Intent(this, Help.class);
+        Intent intent = new Intent(this, Help_Activity.class);
         startActivity(intent);
     }
 }

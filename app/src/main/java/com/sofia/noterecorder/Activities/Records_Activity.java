@@ -9,10 +9,10 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 
+import com.sofia.noterecorder.Fragments.Play_Fragment;
 import com.sofia.noterecorder.R;
 import com.sofia.noterecorder.Resources.SoundFile;
 import com.sofia.noterecorder.Services.PagerAdapter;
-import com.sofia.noterecorder.fragments.PlayFragment;
 
 /**
  * @author Sofia Piekkola
@@ -20,9 +20,9 @@ import com.sofia.noterecorder.fragments.PlayFragment;
  * @since 10.5.2017
  *
  *
- * ListenRecordsActivity displays the play view.
+ * Records_Activity displays the play view.
  */
-public class ListenRecordsActivity extends BaseActivity {
+public class Records_Activity extends Base_Activity {
 
     /**
      * Creates play view
@@ -57,14 +57,14 @@ public class ListenRecordsActivity extends BaseActivity {
      * @param soundFile - selected sound file
      */
     public void soundSelected(SoundFile soundFile) {
-        PlayFragment playFragment = (PlayFragment) getFragmentManager().findFragmentById(R.id.playFileFragment);
+        Play_Fragment playFragment = (Play_Fragment) getFragmentManager().findFragmentById(R.id.playFileFragment);
         int duration = getFileDuration(soundFile.getPath());
         if ( playFragment!= null && playFragment.isVisible()){
             playFragment.initialiseButtons(soundFile.getPath(), soundFile.getName(), duration);
             //noinspection ConstantConditions
             playFragment.getView().setBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimary));
         }else {
-            Intent intent = new Intent(this, PlayActivity.class);
+            Intent intent = new Intent(this, Play_Activity.class);
             intent.putExtra("name", soundFile.getName());
             intent.putExtra("path", soundFile.getPath());
             intent.putExtra("duration", duration);

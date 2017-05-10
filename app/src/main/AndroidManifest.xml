@@ -12,18 +12,18 @@
         android:supportsRtl="true"
         android:theme="@style/DefaultTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name=".Activities.MainActivity">
+        <activity android:name=".Activities.Main_Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.ListenRecordsActivity"
+        <activity android:name=".Activities.Records_Activity"
             android:theme="@style/AppTheme"/>
-        <activity android:name=".Activities.BaseActivity" />
-        <activity android:name=".Activities.PlayActivity"/>
-        <activity android:name=".Activities.Help" />
-        <activity android:name=".Activities.Settings"
+        <activity android:name=".Activities.Base_Activity" />
+        <activity android:name=".Activities.Play_Activity"/>
+        <activity android:name=".Activities.Help_Activity" />
+        <activity android:name=".Activities.Settings_Activity"
             android:configChanges="locale|orientation"/>
         <service android:name=".Services.RecordService" />
     </application>

@@ -1,4 +1,4 @@
-package com.sofia.noterecorder.fragments;
+package com.sofia.noterecorder.Fragments;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -14,9 +14,9 @@ import com.sofia.noterecorder.R;
  * @since 10.5.2017
  *
  *
- * TxtBtnFragment displays the text buttons in the first view.
+ * Record_Fragment displays the record button in the first view.
  */
-public class TxtBtnFragment extends Fragment {
+public class Record_Fragment extends Fragment {
 
     /**
      * Instantiates the view
@@ -30,6 +30,6 @@ public class TxtBtnFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        return inflater.inflate(R.layout.fragment_txt_btns, container, false);
+        return inflater.inflate(R.layout.fragment_record, container, false);
     }
 }

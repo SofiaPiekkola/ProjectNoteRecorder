@@ -1,6 +1,7 @@
 package com.sofia.noterecorder.Services;
 
-import com.sofia.noterecorder.Activities.Settings;
+import com.sofia.noterecorder.Activities.Settings_Activity;
+
 import android.app.Service;
 import android.content.Intent;
 import android.media.MediaRecorder;
@@ -90,7 +91,7 @@ public class RecordService extends Service {
     private void startRecording() {
         recorder = new MediaRecorder();
         recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-        if (Settings.recordType == 1) recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+        if (Settings_Activity.recordType == 1) recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
         else recorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
         recorder.setOutputFile(createFile());
         recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
@@ -134,7 +135,7 @@ public class RecordService extends Service {
         int i = 0;
         String length = "%03d";
         String type;
-        if (Settings.recordType == 1) type = ".3gp";
+        if (Settings_Activity.recordType == 1) type = ".3gp";
         else type = ".mp4";
         String mFileName;
 

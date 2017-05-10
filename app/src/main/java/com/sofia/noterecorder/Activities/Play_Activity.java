@@ -8,8 +8,10 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.widget.SeekBar;
 import android.widget.TextView;
+
+import com.sofia.noterecorder.Fragments.Play_Fragment;
 import com.sofia.noterecorder.R;
-import com.sofia.noterecorder.fragments.PlayFragment;
+
 import java.util.Locale;
 
 /**
@@ -18,9 +20,9 @@ import java.util.Locale;
  * @since 10.5.2017
  *
  *
- * PlayActivity sets up the play view for portrait orientation.
+ * Play_Activity sets up the play view for portrait orientation.
  */
-public class PlayActivity extends BaseActivity {
+public class Play_Activity extends Base_Activity {
 
     /**
      * Displays the time that is left when listening the recording
@@ -91,7 +93,7 @@ public class PlayActivity extends BaseActivity {
         String name = (String) getIntent().getExtras().get("name");
         String path = (String) getIntent().getExtras().get("path");
         int duration = getIntent().getIntExtra("duration", 0);
-        PlayFragment playFragment = (PlayFragment) getFragmentManager().findFragmentById(R.id.playFileFragment);
+        Play_Fragment playFragment = (Play_Fragment) getFragmentManager().findFragmentById(R.id.playFileFragment);
         playFragment.initialiseButtons(path, name, duration);
     }
 

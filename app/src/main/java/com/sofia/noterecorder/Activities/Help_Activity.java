@@ -9,9 +9,9 @@ import com.sofia.noterecorder.R;
  * @since 10.5.2017
  *
  *
- * Help displays the help.
+ * Help_Activity displays the help.
  */
-public class Help extends BaseActivity {
+public class Help_Activity extends Base_Activity {
 
     /**
      * Creates help view

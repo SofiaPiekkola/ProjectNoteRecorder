@@ -19,9 +19,9 @@ import java.util.Locale;
  * @since 10.5.2017
  *
  *
- * Settings displays the settings view.
+ * Settings_Activity displays the settings view.
  */
-public class Settings extends BaseActivity {
+public class Settings_Activity extends Base_Activity {
     private static int language = 1;
     public static int recordType = 1;
     private SharedPreferences sharedPref;

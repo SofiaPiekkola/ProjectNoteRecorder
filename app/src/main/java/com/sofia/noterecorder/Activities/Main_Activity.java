@@ -22,9 +22,9 @@ import java.io.File;
  * @since 10.5.2017
  *
  *
- * MainActivity displays the first view of the app.
+ * Main_Activity displays the first view of the app.
  */
-public class MainActivity extends BaseActivity {
+public class Main_Activity extends Base_Activity {
 
     /**
      * Permission to use microphone.
@@ -147,7 +147,7 @@ public class MainActivity extends BaseActivity {
      */
     @SuppressWarnings("UnusedParameters")
     public void listenRecords(View view) {
-        Intent intent = new Intent(this, ListenRecordsActivity.class);
+        Intent intent = new Intent(this, Records_Activity.class);
         startActivity(intent);
     }
 
