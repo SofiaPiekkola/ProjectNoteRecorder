@@ -14,8 +14,22 @@ import com.sofia.noterecorder.Resources.SoundFile;
 import com.sofia.noterecorder.Services.PagerAdapter;
 import com.sofia.noterecorder.fragments.PlayFragment;
 
+/**
+ * @author Sofia Piekkola
+ * @version 1.0
+ * @since 10.5.2017
+ *
+ *
+ * ListenRecordsActivity displays the play view.
+ */
 public class ListenRecordsActivity extends BaseActivity {
 
+    /**
+     * Creates play view
+     * If in portrait, creates the tabs to display notes and sounds on different tabs.
+     *
+     * @param savedInstanceState - mapping from String keys
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +50,12 @@ public class ListenRecordsActivity extends BaseActivity {
         }
     }
 
+    /**
+     * Opens play view for selected file
+     * If in landscape, selects file. If in portrait, opens new view for sound file.
+     *
+     * @param soundFile - selected sound file
+     */
     public void soundSelected(SoundFile soundFile) {
         PlayFragment playFragment = (PlayFragment) getFragmentManager().findFragmentById(R.id.playFileFragment);
         int duration = getFileDuration(soundFile.getPath());
@@ -52,6 +72,12 @@ public class ListenRecordsActivity extends BaseActivity {
         }
     }
 
+    /**
+     * Returns duration of selected file
+     *
+     * @param path - path for selected file
+     * @return - how many seconds does selected sound file last
+     */
     private int getFileDuration(String path) {
         MediaMetadataRetriever mmr = new MediaMetadataRetriever();
         mmr.setDataSource(path);
