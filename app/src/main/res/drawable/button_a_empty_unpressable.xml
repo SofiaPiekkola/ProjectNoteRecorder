@@ -15,9 +15,9 @@
                 android:gradientRadius="100%"
                 android:centerX="40%"
                 android:centerY="40%"
-                android:centerColor="#750000"
-                android:startColor="#FF0000"
-                android:endColor="#D10606"
+                android:centerColor="#171717"
+                android:startColor="#A8A8A8"
+                android:endColor="#4D4D4D"
                 android:type="radial"
                 />
         </shape>

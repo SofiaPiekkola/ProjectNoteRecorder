@@ -15,7 +15,7 @@
         android:background="@drawable/button_a_empty"
         android:paddingRight="10dp"
         tools:ignore="RtlSymmetry"
-        android:visibility="invisible"/>
+        android:visibility="gone"/>
 
     <TextView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"

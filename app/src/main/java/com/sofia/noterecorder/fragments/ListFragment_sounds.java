@@ -20,29 +20,23 @@ import com.sofia.noterecorder.Resources.SoundFile;
 import java.io.File;
 import java.util.ArrayList;
 
-public class ListFragment extends Fragment {
-    ArrayList<SoundFile> notes = new ArrayList<>();
+public class ListFragment_sounds extends Fragment {
+    ArrayList<SoundFile> sounds = new ArrayList<>();
     public View row;
-    boolean viewNull;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        viewNull = true;
-        createSounds("/notes/open");
-        createSounds("/notes/close");
-        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            createSounds("/sounds/open");
-            createSounds("/sounds/close");
-        }
+        createSounds("/sounds/open", sounds);
+        createSounds("/sounds/close", sounds);
     }
 
-    private void createSounds(String file) {
+    private void createSounds(String file, ArrayList<SoundFile> list) {
         String path = getActivity().getExternalCacheDir().getAbsolutePath() + file;
         File dir = new File(path);
         File[] files = dir.listFiles();
         if (files != null) {
-            for (File f : files) notes.add(new SoundFile(f.getName(), path));
+            for (File f : files) list.add(new SoundFile(f.getName(), path));
         }
     }
 
@@ -52,11 +46,10 @@ public class ListFragment extends Fragment {
         super.onCreateView(inflater, container, savedInstanceState);
         View view = inflater.inflate(R.layout.list_fragment, container, false);
         ListView listView = (ListView) view.findViewById(R.id.list);
-        ArrayAdapter<SoundFile> soundAdapter = new ArrayAdapter<>(getActivity(), R.layout.sound_file,  R.id.text, notes);
+        ArrayAdapter<SoundFile> soundAdapter = new ArrayAdapter<>(getActivity(), R.layout.sound_file,  R.id.text, sounds);
         listView.setAdapter(soundAdapter);
         addClickListener(listView);
         selectFirstIfInLandscape(listView);
-        addOpenNoteMarkers(listView);
         return view;
     }
 
@@ -76,33 +69,13 @@ public class ListFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (view != null){
+                if (view != null) {
                     if (row != null) row.setBackgroundResource(R.color.colorPrimaryDark);
                     row = view;
                     view.setBackgroundResource(R.color.colorPrimary);
-                    ((ListenRecordsActivity) getActivity()).soundSelected(notes.get(position));
+                    ((ListenRecordsActivity) getActivity()).soundSelected(sounds.get(position));
                 }
-                else if (viewNull){
-                    viewNull = false;
-                    selectFirstIfInLandscape(listView);
-                }
-            }
-        });
-    }
-
-    private void addOpenNoteMarkers(ListView listView) {
-        listView.post(new Runnable() {
-            @Override
-            public void run() {
-                for (int i = 0; i < listView.getLastVisiblePosition() + 1; i++) {
-                    View v = listView.getChildAt(i -
-                            listView.getFirstVisiblePosition() + listView.getHeaderViewsCount());
-                    if (v != null) {
-                        TextView b = (TextView) v.findViewById(R.id.open_btn);
-                        if (notes.get(i).getPath().contains("notes/open")) b.setVisibility(View.VISIBLE);
-                        else b.setVisibility(View.INVISIBLE);
-                    }
-                }
+                else selectFirstIfInLandscape(listView);
             }
         });
     }
