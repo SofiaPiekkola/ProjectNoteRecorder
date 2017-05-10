@@ -126,12 +126,8 @@ public class Settings_Activity extends Base_Activity {
         DisplayMetrics dm = res.getDisplayMetrics();
         Configuration conf = res.getConfiguration();
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            conf.setLocale(myLocale);
-        } else {
-            conf.locale = myLocale;
-        }if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1)
-            createConfigurationContext(conf);
-        else res.updateConfiguration(conf, dm);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) conf.setLocale(myLocale);
+        else conf.locale = myLocale;
+        res.updateConfiguration(conf, dm);
     }
 }
