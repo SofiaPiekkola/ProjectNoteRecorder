@@ -61,7 +61,6 @@ public class MainActivity extends BaseActivity {
 
     public void record(View view) {
         Button b = (Button) findViewById(R.id.btnRecDiff);
-        System.out.println(b.getText().toString().toLowerCase());
         if (b.getText().toString().toLowerCase().contains("note") ||
                 b.getText().toString().toLowerCase().contains("muistiin")) noteState = "sounds";
         else noteState = "notes";
@@ -78,9 +77,14 @@ public class MainActivity extends BaseActivity {
     public void soundOrNote(View view) {
         Button pressed = (Button) view;
         if (pressed.getText().toString().toLowerCase().contains("note") ||
-                pressed.getText().toString().toLowerCase().contains("muistiin"))
+                pressed.getText().toString().toLowerCase().contains("muistiin")) {
             pressed.setText(R.string.rec_sound);
-        else pressed.setText(R.string.rec_note);
+            Toast.makeText(this, getString(R.string.setToSound), Toast.LENGTH_SHORT).show();
+        }
+        else {
+            pressed.setText(R.string.rec_note);
+            Toast.makeText(this, getString(R.string.setToNote), Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void listenRecords(View view) {
