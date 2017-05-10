@@ -8,18 +8,45 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.widget.SeekBar;
 import android.widget.TextView;
-
 import com.sofia.noterecorder.R;
 import com.sofia.noterecorder.fragments.PlayFragment;
-
 import java.util.Locale;
 
+/**
+ * @author Sofia Piekkola
+ * @version 1.0
+ * @since 10.5.2017
+ *
+ *
+ * PlayActivity sets up the play view for portrait orientation.
+ */
 public class PlayActivity extends BaseActivity {
+
+    /**
+     * Displays the time that is left when listening the recording
+     */
     private TextView timeLeft;
+
+    /**
+     * Displays the time that is left when listening the recording
+     */
     private SeekBar seekBar;
+
+    /**
+     * Full length of the seekBar
+     */
     private int maxValue;
+
+    /**
+     * Used to capture time that is left when listening the recording
+     */
     private MyBroadCastReceiver receiver;
 
+    /**
+     * Creates the view for portrait orientation
+     *
+     * @param savedInstanceState - mapping from String keys
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +69,9 @@ public class PlayActivity extends BaseActivity {
         }
     }
 
-
+    /**
+     * Unregisters the receiver
+     */
     @Override
     public void onDestroy(){
         super.onDestroy();
@@ -53,6 +82,9 @@ public class PlayActivity extends BaseActivity {
         }
     }
 
+    /**
+     * Creates the play file fragment to display opened sound file.
+     */
     @Override
     protected void onResume() {
         super.onResume();
@@ -63,6 +95,24 @@ public class PlayActivity extends BaseActivity {
         playFragment.initialiseButtons(path, name, duration);
     }
 
+    /**
+     * Captures time that is left when listening the recording
+     */
+    public class MyBroadCastReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            long mills = intent.getLongExtra("duration", 0);
+            int secs = ((int) mills)/1000;
+            int mins = secs / 60;
+            String time = String.format(Locale.ENGLISH, "%02d", mins) + ":" + String.format(Locale.ENGLISH, "%02d", (secs % 60));
+            timeLeft.setText(time);
+            seekBar.setProgress(maxValue - secs);
+        }
+    }
+
+    /**
+     * Sets up the seekBar
+     */
     private void setSeekBar() {
         seekBar.setProgress(0);
         seekBar.setMax(maxValue);
@@ -71,20 +121,5 @@ public class PlayActivity extends BaseActivity {
         int secs = maxValue % 60;
         String time = String.format(Locale.ENGLISH, "%02d", mins) + ":" + String.format(Locale.ENGLISH, "%02d", secs);
         timeLeft.setText(time);
-    }
-
-    private void updateTime(int secs) {
-        int mins = secs / 60;
-        String time = String.format(Locale.ENGLISH, "%02d", mins) + ":" + String.format(Locale.ENGLISH, "%02d", (secs % 60));
-        timeLeft.setText(time);
-        seekBar.setProgress(maxValue - secs);
-    }
-
-    public class MyBroadCastReceiver extends BroadcastReceiver {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            long mills = intent.getLongExtra("duration", 0);
-            updateTime(((int)mills)/1000);
-        }
     }
 }
