@@ -16,8 +16,8 @@
                 android:centerX="40%"
                 android:centerY="40%"
                 android:centerColor="#750000"
-                android:startColor="#D10000"
-                android:endColor="@color/colorAccent"
+                android:startColor="#FF0000"
+                android:endColor="#D10606"
                 android:type="radial"
                 />
         </shape>
