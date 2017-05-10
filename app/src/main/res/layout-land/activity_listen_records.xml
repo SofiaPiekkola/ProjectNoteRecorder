@@ -7,12 +7,12 @@
     >
 
     <fragment
-        android:name="com.sofia.noterecorder.fragments.ListFragment"
+        android:name="com.sofia.noterecorder.fragments.ListFragment_notes"
         android:id="@+id/recordingsListFragment"
         android:layout_width="0dp"
         android:layout_weight="0.5"
         android:layout_height="match_parent"
-        tools:layout="@layout/list_fragment"/>
+        tools:layout="@layout/fragment_list"/>
 
     <fragment
         android:name="com.sofia.noterecorder.fragments.PlayFragment"
@@ -20,7 +20,8 @@
         android:layout_weight="0.5"
         android:layout_height="match_parent"
         android:id="@+id/playFileFragment"
-        tools:layout="@layout/play_fragment"/>
+        tools:layout="@layout/fragment_play"
+        tools:ignore="InconsistentLayout" />
 
 
 </LinearLayout>

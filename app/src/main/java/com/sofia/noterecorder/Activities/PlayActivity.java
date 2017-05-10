@@ -1,4 +1,4 @@
-package com.sofia.noterecorder.Activitys;
+package com.sofia.noterecorder.Activities;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -15,10 +15,10 @@ import com.sofia.noterecorder.fragments.PlayFragment;
 import java.util.Locale;
 
 public class PlayActivity extends BaseActivity {
-    TextView timeLeft;
-    SeekBar seekBar;
-    int maxValue;
-    MyBroadCastReceiver receiver;
+    private TextView timeLeft;
+    private SeekBar seekBar;
+    private int maxValue;
+    private MyBroadCastReceiver receiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +35,8 @@ public class PlayActivity extends BaseActivity {
 
             TextView textView = (TextView) findViewById(R.id.soundName);
             String name = (String) getIntent().getExtras().get("name");
-            textView.setText(name.substring(0, name.length() - 4));
+            if (name != null)
+                textView.setText(name.substring(0, name.length() - 4));
             maxValue = (int) getIntent().getExtras().get("duration");
             setSeekBar();
         }

@@ -4,11 +4,11 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.sofia.noterecorder.fragments.ListFragment;
+import com.sofia.noterecorder.fragments.ListFragment_notes;
 import com.sofia.noterecorder.fragments.ListFragment_sounds;
 
 public class PagerAdapter extends FragmentStatePagerAdapter {
-    int mNumOfTabs;
+    private final int mNumOfTabs;
 
     public PagerAdapter(FragmentManager fm, int NumOfTabs) {
         super(fm);
@@ -19,11 +19,9 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                ListFragment tab1 = new ListFragment();
-                return tab1;
+                return new ListFragment_notes();
             case 1:
-                ListFragment_sounds tab2 = new ListFragment_sounds();
-                return tab2;
+                return new ListFragment_sounds();
             default:
                 return null;
         }

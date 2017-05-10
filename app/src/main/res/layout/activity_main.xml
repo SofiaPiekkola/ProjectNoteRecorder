@@ -3,13 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.sofia.noterecorder.Activitys.MainActivity"
+    tools:context="com.sofia.noterecorder.Activities.MainActivity"
     android:orientation="vertical">
 
     <fragment
         android:name="com.sofia.noterecorder.fragments.RecordFragment"
         android:id="@+id/recordFragment"
-        tools:layout="@layout/record_fragment"
+        tools:layout="@layout/fragment_record"
         android:layout_height="0dp"
         android:layout_weight="0.6"
         android:layout_width="match_parent"/>
@@ -17,7 +17,7 @@
     <fragment
         android:name="com.sofia.noterecorder.fragments.TxtBtnFragment"
         android:id="@+id/btnFragment"
-        tools:layout="@layout/txt_btn_fragment"
+        tools:layout="@layout/fragment_txt_btns"
         android:layout_height="0dp"
         android:layout_weight="0.4"
         android:layout_width="match_parent"/>

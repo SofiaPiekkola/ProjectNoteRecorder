@@ -17,24 +17,21 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.sofia.noterecorder.R;
-
 import java.io.File;
 import java.io.IOException;
 
-import static android.view.View.GONE;
-
+@SuppressWarnings({"ConstantConditions", "ResultOfMethodCallIgnored"})
 public class PlayFragment extends Fragment {
     private MediaPlayer mPlayer;
     private CountDownTimer countDownTimer;
-    String path;
+    private String path;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        return inflater.inflate(R.layout.play_fragment, container, false);
+        return inflater.inflate(R.layout.fragment_play, container, false);
     }
 
     public void initialiseButtons(String path, String name, int duration) {
@@ -51,7 +48,7 @@ public class PlayFragment extends Fragment {
         if (path.contains("open")) changeBtn(true, open);
         else changeBtn(false, open);
         if (path.contains("notes")) {
-            open.setBackgroundResource(R.drawable.selector_open);
+            open.setVisibility(View.VISIBLE);
             open.setClickable(true);
             getActivity().findViewById(R.id.recOpen).setVisibility(View.VISIBLE);
             open.setOnClickListener(v -> {
@@ -65,10 +62,10 @@ public class PlayFragment extends Fragment {
             });
         }
         else {
-            open.setBackgroundResource(R.drawable.button_a_empty_unpressable);
+            open.setVisibility(View.GONE);
             open.setClickable(false);
             TextView t = (TextView) getActivity().findViewById(R.id.recOpen);
-            t.setVisibility(GONE);
+            t.setVisibility(View.GONE);
         }
     }
 
@@ -79,7 +76,7 @@ public class PlayFragment extends Fragment {
         else t.setText(getString(R.string.open));
     }
 
-    public void setOpen(String oldPath, String newPath) {
+    private void setOpen(String oldPath, String newPath) {
         String changed = path.replace(oldPath, newPath);
         File from = new File(path);
         File to = new File(changed);
@@ -161,11 +158,11 @@ public class PlayFragment extends Fragment {
             Email.setType("text/email");
             Email.putExtra(Intent.EXTRA_TEXT, "File attached");
             Email.putExtra(Intent.EXTRA_STREAM, u);
-            startActivity(Intent.createChooser(Email, "Select your e-mail service:"));
+            startActivity(Intent.createChooser(Email, getString(R.string.selectMail)));
         });
     }
 
-    public void playButton(int duration){
+    private void playButton(int duration){
         Button play = (Button) getView().findViewById(R.id.playStop);
         play.setOnClickListener((View v) -> startPlay(play, duration));
     }

@@ -1,4 +1,4 @@
-package com.sofia.noterecorder.Activitys;
+package com.sofia.noterecorder.Activities;
 
 import android.Manifest;
 import android.content.BroadcastReceiver;
@@ -19,11 +19,10 @@ import com.sofia.noterecorder.Services.RecordService;
 import java.io.File;
 
 public class MainActivity extends BaseActivity {
-    String noteState;
     private static final int REQUEST_RECORD_AUDIO_PERMISSION = 200;
     private boolean permissionToRecordAccepted = false;
-    private String [] permissions = {Manifest.permission.RECORD_AUDIO};
-    TimeReceiver timeReceiver;
+    private final String [] permissions = {Manifest.permission.RECORD_AUDIO};
+    private TimeReceiver timeReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +60,7 @@ public class MainActivity extends BaseActivity {
 
     public void record(View view) {
         Button b = (Button) findViewById(R.id.btnRecDiff);
+        String noteState;
         if (b.getText().toString().toLowerCase().contains("note") ||
                 b.getText().toString().toLowerCase().contains("muistiin")) noteState = "sounds";
         else noteState = "notes";
@@ -87,13 +87,14 @@ public class MainActivity extends BaseActivity {
         }
     }
 
+    @SuppressWarnings("UnusedParameters")
     public void listenRecords(View view) {
         Intent intent = new Intent(this, ListenRecordsActivity.class);
         startActivity(intent);
     }
 
     public class TimeReceiver extends BroadcastReceiver {
-        Button b = (Button) findViewById(R.id.recBtn);
+        final Button b = (Button) findViewById(R.id.recBtn);
         @Override
         public void onReceive(Context context, Intent intent) {
             String time = intent.getStringExtra("time");
@@ -101,7 +102,9 @@ public class MainActivity extends BaseActivity {
         }
     }
 
+    @SuppressWarnings("ResultOfMethodCallIgnored")
     private void createSaveDirs() {
+        @SuppressWarnings("ConstantConditions")
         File folder = new File(getExternalCacheDir().getAbsolutePath() + "/sounds/open/");
         folder.mkdirs();
         folder = new File(getExternalCacheDir().getAbsolutePath() + "/notes/open/");
