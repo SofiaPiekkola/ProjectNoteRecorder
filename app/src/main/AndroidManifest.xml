@@ -18,8 +18,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.Records_Activity"
-            android:theme="@style/AppTheme"/>
+        <activity android:name=".Activities.Records_Activity"/>
         <activity android:name=".Activities.Base_Activity" />
         <activity android:name=".Activities.Play_Activity"/>
         <activity android:name=".Activities.Help_Activity" />

@@ -31,6 +31,9 @@ public class Records_Activity extends Base_Activity {
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
+            setTheme(R.style.AppTheme);
+        else setTheme(R.style.DefaultTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listen_records);
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
