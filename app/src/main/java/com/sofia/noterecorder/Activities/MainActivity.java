@@ -167,7 +167,7 @@ public class MainActivity extends BaseActivity {
      * Creates all folders used in this application.
      */
     @SuppressWarnings({"ResultOfMethodCallIgnored", "ConstantConditions"})
-    void createFolder(String path){
+    private void createFolder(String path){
         File folder = new File(getExternalCacheDir().getAbsolutePath() + path);
         folder.mkdirs();
     }

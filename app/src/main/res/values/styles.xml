@@ -47,7 +47,7 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
-    <!--Alertdialog fired when delete is called-->
+    <!--Alert dialog fired when delete is called-->
     <style name="AlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textColorPrimary">#FFFFFF</item>
