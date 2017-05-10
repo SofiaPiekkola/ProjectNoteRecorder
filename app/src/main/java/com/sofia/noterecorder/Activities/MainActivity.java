@@ -18,12 +18,41 @@ import com.sofia.noterecorder.Services.RecordService;
 
 import java.io.File;
 
+/**
+ * @author Sofia Piekkola
+ * @version 1.0
+ * @since 10.5.2017
+ *
+ *
+ * MainActivity displays the first view of the app.
+ */
 public class MainActivity extends BaseActivity {
+
+    /**
+     * Permission to use microphone.
+     */
     private static final int REQUEST_RECORD_AUDIO_PERMISSION = 200;
+
+    /**
+     * True if the permission is accepted.
+     */
     private boolean permissionToRecordAccepted = false;
+
+    /**
+     * Array of permissions
+     */
     private final String [] permissions = {Manifest.permission.RECORD_AUDIO};
+
+    /**
+     * BroadcastReceiver used to display the duration of the recording
+     */
     private TimeReceiver timeReceiver;
 
+    /**
+     * Creates the first view and requests permissions.
+     *
+     * @param savedInstanceState - mapping from String keys
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,9 +60,20 @@ public class MainActivity extends BaseActivity {
         timeReceiver = new TimeReceiver();
         registerReceiver(timeReceiver, new IntentFilter("com.sofia.timeBroadcast"));
         ActivityCompat.requestPermissions(this, permissions, REQUEST_RECORD_AUDIO_PERMISSION);
-        createSaveDirs();
+
+        createFolder("/sounds/open/");
+        createFolder("/notes/open/");
+        createFolder("/sounds/close/");
+        createFolder("/notes/close/");
     }
 
+    /**
+     * Callback for the result from requesting permissions.
+     *
+     * @param requestCode - request code passed in {@link #requestPermissions(String[], int)}.
+     * @param permissions - requested permissions. Never null.
+     * @param grantResults - grant results for the corresponding permissions
+     */
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -48,6 +88,9 @@ public class MainActivity extends BaseActivity {
         }
     }
 
+    /**
+     * Unregisters the receiver.
+     */
     @Override
     public void onDestroy(){
         super.onDestroy();
@@ -58,6 +101,13 @@ public class MainActivity extends BaseActivity {
         }
     }
 
+    /**
+     * Starts recording.
+     * Called when user clicks record-button and starts the Record service
+     * that handles actual recording.
+     *
+     * @param view - pressed button. If activated, displays the microphone image.
+     */
     public void record(View view) {
         Button b = (Button) findViewById(R.id.btnRecDiff);
         String noteState;
@@ -74,6 +124,11 @@ public class MainActivity extends BaseActivity {
         startService(intent);
     }
 
+    /**
+     * Determines weather file to be recorded will be sound or note.
+     *
+     * @param view - pressed button
+     */
     public void soundOrNote(View view) {
         Button pressed = (Button) view;
         if (pressed.getText().toString().toLowerCase().contains("note") ||
@@ -87,12 +142,20 @@ public class MainActivity extends BaseActivity {
         }
     }
 
+    /**
+     * Opens new view for listening and editing files.
+     *
+     * @param view - pressed button. Not used.
+     */
     @SuppressWarnings("UnusedParameters")
     public void listenRecords(View view) {
         Intent intent = new Intent(this, ListenRecordsActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * Displays the duration of the recording.
+     */
     public class TimeReceiver extends BroadcastReceiver {
         final Button b = (Button) findViewById(R.id.recBtn);
         @Override
@@ -102,16 +165,12 @@ public class MainActivity extends BaseActivity {
         }
     }
 
-    @SuppressWarnings("ResultOfMethodCallIgnored")
-    private void createSaveDirs() {
-        @SuppressWarnings("ConstantConditions")
-        File folder = new File(getExternalCacheDir().getAbsolutePath() + "/sounds/open/");
-        folder.mkdirs();
-        folder = new File(getExternalCacheDir().getAbsolutePath() + "/notes/open/");
-        folder.mkdirs();
-        folder = new File(getExternalCacheDir().getAbsolutePath() + "/sounds/close/");
-        folder.mkdirs();
-        folder = new File(getExternalCacheDir().getAbsolutePath() + "/notes/close/");
+    /**
+     * Creates all folders used in this application.
+     */
+    @SuppressWarnings({"ResultOfMethodCallIgnored", "ConstantConditions"})
+    void createFolder(String path){
+        File folder = new File(getExternalCacheDir().getAbsolutePath() + path);
         folder.mkdirs();
     }
 }
