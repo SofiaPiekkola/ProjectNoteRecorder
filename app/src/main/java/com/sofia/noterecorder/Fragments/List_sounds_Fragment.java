@@ -44,7 +44,6 @@ public class List_sounds_Fragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         createSounds("/sounds/open");
-        createSounds("/sounds/close");
     }
 
     /**
