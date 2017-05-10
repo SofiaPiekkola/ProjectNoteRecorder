@@ -1,12 +1,17 @@
 package com.sofia.noterecorder.Activitys;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.media.MediaMetadataRetriever;
+import android.support.design.widget.TabLayout;
 import android.support.v4.content.ContextCompat;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
+import android.support.v7.widget.Toolbar;
 
 import com.sofia.noterecorder.R;
 import com.sofia.noterecorder.Resources.SoundFile;
+import com.sofia.noterecorder.Services.PagerAdapter;
 import com.sofia.noterecorder.fragments.PlayFragment;
 
 public class ListenRecordsActivity extends BaseActivity {
@@ -15,6 +20,20 @@ public class ListenRecordsActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listen_records);
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+            setSupportActionBar(toolbar);
+
+            TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+            tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.notes)));
+            tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.sounds)));
+            tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+
+            final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
+            final PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
+            viewPager.setAdapter(adapter);
+            viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        }
     }
 
     public void soundSelected(SoundFile soundFile) {
