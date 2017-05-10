@@ -1,4 +1,4 @@
-package com.sofia.noterecorder.Activitys;
+package com.sofia.noterecorder.Activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -8,10 +8,7 @@ import android.view.MenuItem;
 
 import com.sofia.noterecorder.R;
 
-/**
- * Created by Sofia on 3.5.2017.
- */
-
+@SuppressWarnings("UnusedParameters")
 public class BaseActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -25,9 +22,9 @@ public class BaseActivity extends AppCompatActivity {
         Intent Email = new Intent(Intent.ACTION_SEND);
         Email.setType("text/email");
         Email.putExtra(Intent.EXTRA_EMAIL, new String[] { "noterecorder@outlook.com" });
-        Email.putExtra(Intent.EXTRA_SUBJECT, "Feedback");
-        Email.putExtra(Intent.EXTRA_TEXT, "Please add your feedback here");
-        startActivity(Intent.createChooser(Email, "Select your e-mail service:"));
+        Email.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.feedback));
+        Email.putExtra(Intent.EXTRA_TEXT, getString(R.string.add));
+        startActivity(Intent.createChooser(Email, getString(R.string.selectMail)));
     }
 
     public void settings(MenuItem item) {

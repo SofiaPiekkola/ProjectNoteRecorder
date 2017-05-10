@@ -30,9 +30,11 @@
     <string name="openToast">This note is now opened.</string>
     <string name="closeToast">This note is now closed.</string>
     <string name="close">Close</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="notes">Notes</string>
     <string name="sounds">Sounds</string>
     <string name="setToNote">Record type set to notes</string>
     <string name="setToSound">Record type set to sounds</string>
+    <string name="selectMail">Select your e-mail service:</string>
+    <string name="add">Please add your feedback here</string>
+    <string name="feedback">Feedback</string>
 </resources>

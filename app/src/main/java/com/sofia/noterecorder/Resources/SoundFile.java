@@ -1,15 +1,11 @@
 package com.sofia.noterecorder.Resources;
 
 public class SoundFile {
-    String name;
-    String path;
+    private final String name;
+    private final String path;
 
     public String getPath() {
         return path;
-    }
-
-    public void setPath(String path) {
-        this.path = path;
     }
 
     public SoundFile(String name, String path) {
@@ -18,8 +14,6 @@ public class SoundFile {
     }
 
     public String getName() { return name; }
-
-    public void setName(String name) { this.name = name; }
 
     @Override
     public String toString() {

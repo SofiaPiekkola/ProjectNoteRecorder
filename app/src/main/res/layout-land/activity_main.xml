@@ -12,7 +12,7 @@
         android:layout_weight="0.4"
         android:layout_height="match_parent"
         android:id="@+id/btnFragment"
-        tools:layout="@layout/txt_btn_fragment" />
+        tools:layout="@layout/fragment_txt_btns" />
 
     <fragment
         android:name="com.sofia.noterecorder.fragments.RecordFragment"
@@ -20,7 +20,7 @@
         android:layout_weight="0.6"
         android:layout_height="match_parent"
         android:id="@+id/recordFragment"
-        tools:layout="@layout/record_fragment" />
+        tools:layout="@layout/fragment_record" />
 
 
 </LinearLayout>

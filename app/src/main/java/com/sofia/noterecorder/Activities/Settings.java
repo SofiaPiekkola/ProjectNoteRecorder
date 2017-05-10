@@ -1,4 +1,4 @@
-package com.sofia.noterecorder.Activitys;
+package com.sofia.noterecorder.Activities;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -16,11 +16,9 @@ import com.sofia.noterecorder.R;
 import java.util.Locale;
 
 public class Settings extends BaseActivity {
-    public static int language = 1;
+    private static int language = 1;
     public static int recordType = 1;
-    SharedPreferences.Editor editor;
-    SharedPreferences sharedPref;
-    Locale myLocale;
+    private SharedPreferences sharedPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +28,7 @@ public class Settings extends BaseActivity {
         getValues();
     }
 
+    @SuppressWarnings("UnusedParameters")
     public void saveSettings(View view) {
         RadioGroup langGroup = (RadioGroup) findViewById(R.id.radioLanguage);
         int selectedLang = langGroup.getCheckedRadioButtonId();
@@ -48,8 +47,11 @@ public class Settings extends BaseActivity {
     }
 
     @SuppressWarnings("deprecation")
-    void getValues(){
-        Locale current = getResources().getConfiguration().locale;
+    private void getValues(){
+        Locale current;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
+            current = getResources().getConfiguration().getLocales().get(0);
+        else current = getResources().getConfiguration().locale;
         boolean fi = current.toString().contains("FI");
         if (fi) language = 2;
 
@@ -69,8 +71,8 @@ public class Settings extends BaseActivity {
         setLocale(lang);
     }
 
-    void saveSelected(){
-        editor = sharedPref.edit();
+    private void saveSelected(){
+        SharedPreferences.Editor editor = sharedPref.edit();
         RadioButton rb = (RadioButton)findViewById(R.id.langEnglish);
         editor.putBoolean("langEnglish", rb.isChecked());
         rb = (RadioButton)findViewById(R.id.langFinnish);
@@ -90,14 +92,19 @@ public class Settings extends BaseActivity {
     }
 
     @SuppressWarnings("deprecation")
-    public void setLocale(String lang) {
-        myLocale = new Locale(lang);
+    private void setLocale(String lang) {
+        Locale myLocale = new Locale(lang);
+        Locale.setDefault(myLocale);
         Resources res = getResources();
         DisplayMetrics dm = res.getDisplayMetrics();
         Configuration conf = res.getConfiguration();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             conf.setLocale(myLocale);
-        else conf.locale = myLocale;
-        res.updateConfiguration(conf, dm);
+        } else {
+            conf.locale = myLocale;
+        }if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1)
+            createConfigurationContext(conf);
+        else res.updateConfiguration(conf, dm);
     }
 }
