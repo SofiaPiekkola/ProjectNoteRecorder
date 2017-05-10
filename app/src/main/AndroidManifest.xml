@@ -16,7 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activitys.ListenRecordsActivity" />
+        <activity android:name=".Activitys.ListenRecordsActivity"
+            android:theme="@style/AppTheme"/>
         <activity android:name=".Activitys.PlayActivity"/>
         <activity android:name=".Activitys.Help" />
         <activity android:name=".Activitys.Settings"

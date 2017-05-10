@@ -9,10 +9,17 @@
 
         <TextView
             style="@style/Header"
-            android:text="@string/renameH"/>
+            android:text="@string/whatH"/>
         <TextView
             style="@style/Paragraph"
-            android:text="@string/renameP"/>
+            android:text="@string/whatP"/>
+
+        <TextView
+            style="@style/Header"
+            android:text="@string/openH"/>
+        <TextView
+            style="@style/Paragraph"
+            android:text="@string/openP"/>
 
         <TextView
             style="@style/Header"
@@ -23,23 +30,16 @@
 
         <TextView
             style="@style/Header"
-            android:text="@string/deleteH"/>
+            android:text="@string/settingsH"/>
         <TextView
             style="@style/Paragraph"
-            android:text="@string/deleteP"/>
+            android:text="@string/settingsP"/>
 
         <TextView
             style="@style/Header"
-            android:text="@string/recordH"/>
+            android:text="@string/renameH"/>
         <TextView
             style="@style/Paragraph"
-            android:text="@string/recordP"/>
-
-        <TextView
-            style="@style/Header"
-            android:text="@string/languageH"/>
-        <TextView
-            style="@style/Paragraph"
-            android:text="@string/languageP"/>
+            android:text="@string/renameP"/>
     </LinearLayout>
 </ScrollView>

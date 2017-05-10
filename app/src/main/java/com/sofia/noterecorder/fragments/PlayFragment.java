@@ -23,6 +23,8 @@ import com.sofia.noterecorder.R;
 import java.io.File;
 import java.io.IOException;
 
+import static android.view.View.GONE;
+
 public class PlayFragment extends Fragment {
     private MediaPlayer mPlayer;
     private CountDownTimer countDownTimer;
@@ -48,16 +50,26 @@ public class PlayFragment extends Fragment {
         Button open = (Button) getView().findViewById(R.id.openClose);
         if (path.contains("open")) changeBtn(true, open);
         else changeBtn(false, open);
-        open.setOnClickListener(v -> {
-            if (path.contains("open")){
-                setOpen("open", "close");
-                changeBtn(false, open);
-            }
-            else {
-                setOpen("close", "open");
-                changeBtn(true, open);
-            }
-        });
+        if (path.contains("notes")) {
+            open.setBackgroundResource(R.drawable.selector_open);
+            open.setClickable(true);
+            getActivity().findViewById(R.id.recOpen).setVisibility(View.VISIBLE);
+            open.setOnClickListener(v -> {
+                if (path.contains("open")) {
+                    setOpen("open", "close");
+                    changeBtn(false, open);
+                } else {
+                    setOpen("close", "open");
+                    changeBtn(true, open);
+                }
+            });
+        }
+        else {
+            open.setBackgroundResource(R.drawable.button_a_empty_unpressable);
+            open.setClickable(false);
+            TextView t = (TextView) getActivity().findViewById(R.id.recOpen);
+            t.setVisibility(GONE);
+        }
     }
 
     private void changeBtn(boolean b, Button open) {
