@@ -15,12 +15,11 @@ import com.sofia.noterecorder.R;
 import java.util.Locale;
 
 /**
+ * Play_Activity sets up the play view for portrait orientation.
+ *
  * @author Sofia Piekkola
  * @version 1.0
  * @since 10.5.2017
- *
- *
- * Play_Activity sets up the play view for portrait orientation.
  */
 public class Play_Activity extends Base_Activity {
 

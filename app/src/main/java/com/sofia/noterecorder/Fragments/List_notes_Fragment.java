@@ -18,13 +18,12 @@ import java.io.File;
 import java.util.ArrayList;
 
 /**
+ * List_notes_Fragment displays the list of notes used in the first tab of portrait orientation
+ * This fragment is used also on the landscape view to display both notes and sounds.
+ *
  * @author Sofia Piekkola
  * @version 1.0
  * @since 10.5.2017
- *
- *
- * List_notes_Fragment displays the list of notes used in the first tab of portrait orientation
- * This fragment is used also on the landscape view to display both notes and sounds.
  */
 public class List_notes_Fragment extends Fragment {
 

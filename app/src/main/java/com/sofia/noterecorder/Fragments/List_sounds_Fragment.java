@@ -17,12 +17,11 @@ import java.io.File;
 import java.util.ArrayList;
 
 /**
+ * List_sounds_Fragment displays the list of sounds used in the second tab of portrait orientation.
+ *
  * @author Sofia Piekkola
  * @version 1.0
  * @since 10.5.2017
- *
- *
- * List_sounds_Fragment displays the list of sounds used in the second tab of portrait orientation
  */
 public class List_sounds_Fragment extends Fragment {
 

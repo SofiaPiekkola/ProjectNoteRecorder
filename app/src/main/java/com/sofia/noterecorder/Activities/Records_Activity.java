@@ -15,12 +15,11 @@ import com.sofia.noterecorder.Resources.SoundFile;
 import com.sofia.noterecorder.Services.PagerAdapter;
 
 /**
+ * Records_Activity displays the play view.
+ *
  * @author Sofia Piekkola
  * @version 1.0
  * @since 10.5.2017
- *
- *
- * Records_Activity displays the play view.
  */
 public class Records_Activity extends Base_Activity {
 

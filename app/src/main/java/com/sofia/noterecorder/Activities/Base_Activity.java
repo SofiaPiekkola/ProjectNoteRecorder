@@ -8,12 +8,11 @@ import android.view.MenuItem;
 import com.sofia.noterecorder.R;
 
 /**
+ * Base_Activity displays the menu. This is the base class for all other activities.
+ *
  * @author Sofia Piekkola
  * @version 1.0
  * @since 10.5.2017
- *
- *
- * Base_Activity displays the menu. This is the base class for all other activities.
  */
 @SuppressWarnings("UnusedParameters")
 public class Base_Activity extends AppCompatActivity {

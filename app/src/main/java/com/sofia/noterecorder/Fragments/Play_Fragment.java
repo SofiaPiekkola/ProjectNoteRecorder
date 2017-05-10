@@ -22,12 +22,11 @@ import java.io.File;
 import java.io.IOException;
 
 /**
+ * Play_Fragment displays the play view used to display selected sound file.
+ *
  * @author Sofia Piekkola
  * @version 1.0
  * @since 10.5.2017
- *
- *
- * Play_Fragment displays the play view used to display selected sound file.
  */
 @SuppressWarnings({"ConstantConditions", "ResultOfMethodCallIgnored"})
 public class Play_Fragment extends Fragment {

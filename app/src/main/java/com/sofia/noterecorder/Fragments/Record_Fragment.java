@@ -9,12 +9,11 @@ import android.view.ViewGroup;
 import com.sofia.noterecorder.R;
 
 /**
+ * Record_Fragment displays the record button in the first view
+ *
  * @author Sofia Piekkola
  * @version 1.0
  * @since 10.5.2017
- *
- *
- * Record_Fragment displays the record button in the first view.
  */
 public class Record_Fragment extends Fragment {
 

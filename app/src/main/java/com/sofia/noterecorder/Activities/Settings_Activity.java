@@ -14,12 +14,11 @@ import com.sofia.noterecorder.R;
 import java.util.Locale;
 
 /**
+ * Settings_Activity displays the settings view.
+ *
  * @author Sofia Piekkola
  * @version 1.0
  * @since 10.5.2017
- *
- *
- * Settings_Activity displays the settings view.
  */
 public class Settings_Activity extends Base_Activity {
     private static int language = 1;

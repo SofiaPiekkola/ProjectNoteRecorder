@@ -1,12 +1,11 @@
 package com.sofia.noterecorder.Resources;
 
 /**
+ * SoundFile is the class for sound files used in this application.
+ *
  * @author Sofia Piekkola
  * @version 1.0
  * @since 10.5.2017
- *
- *
- * SoundFile is the class for sound files used in this application
  */
 public class SoundFile {
     private final String name;

@@ -8,12 +8,11 @@ import com.sofia.noterecorder.Fragments.List_notes_Fragment;
 import com.sofia.noterecorder.Fragments.List_sounds_Fragment;
 
 /**
+ * PagerAdapter is used in creating tabs for the portrait view.
+ *
  * @author Sofia Piekkola
  * @version 1.0
  * @since 10.5.2017
- *
- *
- * PagerAdapter is used in creating tabs for the portrait view.
  */
 public class PagerAdapter extends FragmentStatePagerAdapter {
     /**

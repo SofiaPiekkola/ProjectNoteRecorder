@@ -9,12 +9,11 @@ import android.view.ViewGroup;
 import com.sofia.noterecorder.R;
 
 /**
+ * Buttons_Fragment displays the text buttons in the first view.
+ *
  * @author Sofia Piekkola
  * @version 1.0
  * @since 10.5.2017
- *
- *
- * Buttons_Fragment displays the text buttons in the first view.
  */
 public class Buttons_Fragment extends Fragment {
 

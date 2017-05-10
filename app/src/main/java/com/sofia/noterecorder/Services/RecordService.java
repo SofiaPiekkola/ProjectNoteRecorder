@@ -15,12 +15,11 @@ import java.util.Date;
 import java.util.Locale;
 
 /**
+ * RecordService is used to record the sound files.
+ *
  * @author Sofia Piekkola
  * @version 1.0
  * @since 10.5.2017
- *
- *
- * RecordService is used to record the sound files.
  */
 public class RecordService extends Service {
 

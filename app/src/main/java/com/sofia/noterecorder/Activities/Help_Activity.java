@@ -4,12 +4,11 @@ import android.os.Bundle;
 import com.sofia.noterecorder.R;
 
 /**
+ * Help_Activity displays the help.
+ *
  * @author Sofia Piekkola
  * @version 1.0
  * @since 10.5.2017
- *
- *
- * Help_Activity displays the help.
  */
 public class Help_Activity extends Base_Activity {
 

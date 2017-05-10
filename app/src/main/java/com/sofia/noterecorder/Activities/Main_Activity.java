@@ -17,12 +17,11 @@ import com.sofia.noterecorder.Services.RecordService;
 import java.io.File;
 
 /**
+ * Main_Activity displays the first view of the app.
+ *
  * @author Sofia Piekkola
  * @version 1.0
  * @since 10.5.2017
- *
- *
- * Main_Activity displays the first view of the app.
  */
 public class Main_Activity extends Base_Activity {
 
