@@ -1,4 +1,4 @@
-package com.sofia.noterecorder.Activitys;
+package com.sofia.noterecorder.Activities;
 
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -41,6 +41,7 @@ public class ListenRecordsActivity extends BaseActivity {
         int duration = getFileDuration(soundFile.getPath());
         if ( playFragment!= null && playFragment.isVisible()){
             playFragment.initialiseButtons(soundFile.getPath(), soundFile.getName(), duration);
+            //noinspection ConstantConditions
             playFragment.getView().setBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimary));
         }else {
             Intent intent = new Intent(this, PlayActivity.class);
@@ -51,7 +52,7 @@ public class ListenRecordsActivity extends BaseActivity {
         }
     }
 
-    public int getFileDuration(String path) {
+    private int getFileDuration(String path) {
         MediaMetadataRetriever mmr = new MediaMetadataRetriever();
         mmr.setDataSource(path);
         String duration = mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION);

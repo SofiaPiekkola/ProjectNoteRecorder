@@ -35,4 +35,7 @@
     <string name="sounds">Äänitiedostot</string>
     <string name="setToNote">Nauhoituksen tyyppi asetettu äänitiedostoksi</string>
     <string name="setToSound">Nauhoituksen tyyppi asetettu muistiinpanoksi</string>
+    <string name="selectMail">Valitse sähköpostipalvelu:</string>
+    <string name="add">Lisää viestisi</string>
+    <string name="feedback">Palaute</string>
 </resources>
