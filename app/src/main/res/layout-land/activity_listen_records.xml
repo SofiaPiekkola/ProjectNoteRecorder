@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!--Layout of the play view in portrait orientation-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal" android:layout_width="match_parent"
@@ -7,7 +9,7 @@
     >
 
     <fragment
-        android:name="com.sofia.noterecorder.fragments.ListFragment_notes"
+        android:name="com.sofia.noterecorder.Fragments.List_notes_Fragment"
         android:id="@+id/recordingsListFragment"
         android:layout_width="0dp"
         android:layout_weight="0.5"
@@ -15,7 +17,7 @@
         tools:layout="@layout/fragment_list"/>
 
     <fragment
-        android:name="com.sofia.noterecorder.fragments.PlayFragment"
+        android:name="com.sofia.noterecorder.Fragments.Play_Fragment"
         android:layout_width="0dp"
         android:layout_weight="0.5"
         android:layout_height="match_parent"

@@ -10,16 +10,26 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-
 import com.sofia.noterecorder.R;
-
 import java.util.Locale;
 
-public class Settings extends BaseActivity {
+/**
+ * Settings_Activity displays the settings view.
+ *
+ * @author Sofia Piekkola
+ * @version 1.0
+ * @since 10.5.2017
+ */
+public class Settings_Activity extends Base_Activity {
     private static int language = 1;
     public static int recordType = 1;
     private SharedPreferences sharedPref;
 
+    /**
+     * Creates the settings view
+     *
+     * @param savedInstanceState - mapping from String keys
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +38,12 @@ public class Settings extends BaseActivity {
         getValues();
     }
 
+    /**
+     * Saves the selected settings
+     * Called when user clicks OK!
+     *
+     * @param view - button clicked, not used.
+     */
     @SuppressWarnings("UnusedParameters")
     public void saveSettings(View view) {
         RadioGroup langGroup = (RadioGroup) findViewById(R.id.radioLanguage);
@@ -46,6 +62,9 @@ public class Settings extends BaseActivity {
         finish();
     }
 
+    /**
+     * Gets the previously saved settings.
+     */
     @SuppressWarnings("deprecation")
     private void getValues(){
         Locale current;
@@ -71,6 +90,9 @@ public class Settings extends BaseActivity {
         setLocale(lang);
     }
 
+    /**
+     * Saves the settings to future use.
+     */
     private void saveSelected(){
         SharedPreferences.Editor editor = sharedPref.edit();
         RadioButton rb = (RadioButton)findViewById(R.id.langEnglish);
@@ -91,6 +113,11 @@ public class Settings extends BaseActivity {
         setLocale(lang);
     }
 
+    /**
+     * Sets the localization based on the user selection.
+     *
+     * @param lang - language selected
+     */
     @SuppressWarnings("deprecation")
     private void setLocale(String lang) {
         Locale myLocale = new Locale(lang);
@@ -99,12 +126,8 @@ public class Settings extends BaseActivity {
         DisplayMetrics dm = res.getDisplayMetrics();
         Configuration conf = res.getConfiguration();
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            conf.setLocale(myLocale);
-        } else {
-            conf.locale = myLocale;
-        }if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1)
-            createConfigurationContext(conf);
-        else res.updateConfiguration(conf, dm);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) conf.setLocale(myLocale);
+        else conf.locale = myLocale;
+        res.updateConfiguration(conf, dm);
     }
 }

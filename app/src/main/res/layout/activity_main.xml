@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!--Layout of the first view in portrait-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.sofia.noterecorder.Activities.MainActivity"
+    tools:context="com.sofia.noterecorder.Activities.Main_Activity"
     android:orientation="vertical">
 
     <fragment
-        android:name="com.sofia.noterecorder.fragments.RecordFragment"
+        android:name="com.sofia.noterecorder.Fragments.Record_Fragment"
         android:id="@+id/recordFragment"
         tools:layout="@layout/fragment_record"
         android:layout_height="0dp"
@@ -15,7 +17,7 @@
         android:layout_width="match_parent"/>
 
     <fragment
-        android:name="com.sofia.noterecorder.fragments.TxtBtnFragment"
+        android:name="com.sofia.noterecorder.Fragments.Buttons_Fragment"
         android:id="@+id/btnFragment"
         tools:layout="@layout/fragment_txt_btns"
         android:layout_height="0dp"

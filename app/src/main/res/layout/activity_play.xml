@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!--Layout of the play view in portrait orientation-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
@@ -17,7 +19,6 @@
         android:imeOptions="actionDone"
         android:background="@null"/>
 
-    <!--Seekbar-->
     <SeekBar
         android:id="@+id/seekBar"
         android:layout_width="match_parent"
@@ -35,7 +36,7 @@
 
     <fragment
         android:id="@+id/playFileFragment"
-        android:name="com.sofia.noterecorder.fragments.PlayFragment"
+        android:name="com.sofia.noterecorder.Fragments.Play_Fragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.8"

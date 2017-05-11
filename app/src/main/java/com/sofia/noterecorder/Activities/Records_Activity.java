@@ -9,15 +9,31 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 
+import com.sofia.noterecorder.Fragments.Play_Fragment;
 import com.sofia.noterecorder.R;
 import com.sofia.noterecorder.Resources.SoundFile;
 import com.sofia.noterecorder.Services.PagerAdapter;
-import com.sofia.noterecorder.fragments.PlayFragment;
 
-public class ListenRecordsActivity extends BaseActivity {
+/**
+ * Records_Activity displays the play view.
+ *
+ * @author Sofia Piekkola
+ * @version 1.0
+ * @since 10.5.2017
+ */
+public class Records_Activity extends Base_Activity {
 
+    /**
+     * Creates play view
+     * If in portrait, creates the tabs to display notes and sounds on different tabs.
+     *
+     * @param savedInstanceState - mapping from String keys
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
+            setTheme(R.style.AppTheme);
+        else setTheme(R.style.DefaultTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listen_records);
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
@@ -33,18 +49,38 @@ public class ListenRecordsActivity extends BaseActivity {
             final PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
             viewPager.setAdapter(adapter);
             viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+            tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+                @Override
+                public void onTabSelected(TabLayout.Tab tab) {
+                    viewPager.setCurrentItem(tab.getPosition());
+                }
+
+                @Override
+                public void onTabUnselected(TabLayout.Tab tab) {
+                }
+
+                @Override
+                public void onTabReselected(TabLayout.Tab tab) {
+                }
+            });
         }
     }
 
+    /**
+     * Opens play view for selected file
+     * If in landscape, selects file. If in portrait, opens new view for sound file.
+     *
+     * @param soundFile - selected sound file
+     */
     public void soundSelected(SoundFile soundFile) {
-        PlayFragment playFragment = (PlayFragment) getFragmentManager().findFragmentById(R.id.playFileFragment);
+        Play_Fragment playFragment = (Play_Fragment) getFragmentManager().findFragmentById(R.id.playFileFragment);
         int duration = getFileDuration(soundFile.getPath());
         if ( playFragment!= null && playFragment.isVisible()){
             playFragment.initialiseButtons(soundFile.getPath(), soundFile.getName(), duration);
             //noinspection ConstantConditions
             playFragment.getView().setBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimary));
         }else {
-            Intent intent = new Intent(this, PlayActivity.class);
+            Intent intent = new Intent(this, Play_Activity.class);
             intent.putExtra("name", soundFile.getName());
             intent.putExtra("path", soundFile.getPath());
             intent.putExtra("duration", duration);
@@ -52,6 +88,12 @@ public class ListenRecordsActivity extends BaseActivity {
         }
     }
 
+    /**
+     * Returns duration of selected file
+     *
+     * @param path - path for selected file
+     * @return - how many seconds does selected sound file last
+     */
     private int getFileDuration(String path) {
         MediaMetadataRetriever mmr = new MediaMetadataRetriever();
         mmr.setDataSource(path);
